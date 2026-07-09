@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+body { background: #fff; color: #111; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+
+/* ═══ SageHairLP – Responsive Overrides ═══ */
+
+@media (max-width: 768px) {
+  /* Hero */
+  .shc-hero-topbar   { padding: 20px 20px 0 !important; }
+  .shc-hero-nav-btns { gap: 8px !important; }
+  .shc-hero-content  { padding: 0 20px !important; }
+  .shc-hero-grid      { grid-template-columns: 1fr !important; gap: 28px !important; min-height: auto !important; padding-top: 32px !important; padding-bottom: 40px !important; }
+  .shc-hero-left     { padding-bottom: 0 !important; }
+  .shc-hero-h1       { font-size: 32px !important; max-width: 100% !important; }
+  .shc-hero          { min-height: auto !important; }
+
+  /* Section padding */
+  .shc-pad { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Steps */
+  .shc-steps-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
+
+  /* Features */
+  .shc-features-grid { grid-template-columns: 1fr !important; }
+
+  /* Bio */
+  .shc-bio-grid { grid-template-columns: 1fr !important; }
+
+  /* Reviews */
+  .shc-reviews-grid { grid-template-columns: 1fr !important; }
+
+  /* Financing */
+  .shc-fin-section { grid-template-columns: 1fr !important; }
+  .shc-fin-left    { padding: 0 !important; }
+  .shc-price-big   { font-size: 48px !important; }
+  .shc-fin-outer   { padding: 40px 20px !important; }
+  .shc-fin-photo   { height: 280px !important; }
+
+  /* Commitment */
+  .shc-commit-grid { grid-template-columns: 1fr !important; }
+
+  /* Locations + form */
+  .shc-map-form  { grid-template-columns: 1fr !important; }
+  .shc-form-col  { padding: 32px 0 !important; }
+  .shc-map-outer { padding: 40px 20px 0 !important; }
+
+  /* Heading scale */
+  .shc-h2-xl { font-size: 28px !important; }
+  .shc-h2-lg { font-size: 26px !important; }
+
+  /* CTA button rows */
+  .shc-btn-row { flex-wrap: wrap !important; gap: 12px !important; }
+
+  /* Footer copyright padding */
+  .shc-footer-bar { padding: 32px 20px 28px !important; }
+}
+
+@media (max-width: 480px) {
+  .shc-steps-grid { grid-template-columns: 1fr !important; }
+}
