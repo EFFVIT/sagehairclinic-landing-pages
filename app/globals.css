@@ -12,17 +12,16 @@ button { font-family: inherit; }
   /* Hero */
   .shc-hero-topbar   { padding: 20px 20px 0 !important; }
   .shc-hero-nav-btns { gap: 8px !important; }
-  .shc-hero-content  { padding: 0 20px !important; }
-  .shc-hero-grid      { grid-template-columns: 1fr !important; gap: 28px !important; min-height: auto !important; padding-top: 32px !important; padding-bottom: 40px !important; }
-  .shc-hero-left     { padding-bottom: 0 !important; }
-  .shc-hero-h1       { font-size: 32px !important; max-width: 100% !important; }
-  .shc-hero          { min-height: auto !important; }
+  .shc-hero-content  { padding: clamp(32px, 8vh, 64px) 20px !important; }
+  .shc-hero-grid      { grid-template-columns: 1fr !important; gap: 28px !important; }
 
   /* Section padding */
   .shc-pad { padding-left: 20px !important; padding-right: 20px !important; }
 
   /* Steps */
   .shc-steps-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
+  .shc-step-icon  { width: 130px !important; height: 130px !important; }
+  .shc-step-icon svg, .shc-step-icon span { transform: scale(0.68); }
 
   /* Features */
   .shc-features-grid { grid-template-columns: 1fr !important; }

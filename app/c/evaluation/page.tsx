@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 export default function EvaluationPage() {
   return (
     <SageHairLP
-      heroFormId="REPLACE_WITH_HERO_FORM_ID"
-      bottomFormId="REPLACE_WITH_FOOTER_FORM_ID"
+      heroFormId="JRQUSXBB48Nt2DcTGCpM"
+      bottomFormId="gC3pfj36b8I5Xf5LnsJM"
     />
   )
 }

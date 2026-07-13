@@ -14,9 +14,9 @@ const DARK_BTN = '#1a1f1b'
 
 // ── ICONS ────────────────────────────────────────────────────────────────
 
-function IconCircle({ children, size = 106 }: { children: React.ReactNode; size?: number }) {
+function IconCircle({ children, size = 190 }: { children: React.ReactNode; size?: number }) {
   return (
-    <div style={{
+    <div className="shc-step-icon" style={{
       width: size,
       height: size,
       borderRadius: '50%',
@@ -34,7 +34,7 @@ function IconCircle({ children, size = 106 }: { children: React.ReactNode; size?
 // Step 1 — Schedule Your Evaluation (calendar)
 function CalendarIcon() {
   return (
-    <svg width="53" height="60" viewBox="0 0 106 119" fill="none" aria-hidden="true">
+    <svg width="95" height="107" viewBox="0 0 106 119" fill="none" aria-hidden="true">
       <path d="M90.9954 75.52C94.906 76.8872 98.3159 79.3037 100.899 82.4312C104.086 86.2969 106 91.2427 106 96.6294C106 102.016 104.161 106.784 101.081 110.612C96.9643 115.726 90.6454 119 83.5479 119C77.2119 119 71.4865 116.385 67.4078 112.178C65.4799 110.195 63.9156 107.854 62.8316 105.267C61.7167 102.607 61.0992 99.6919 61.0992 96.6294C61.0992 85.1348 69.8056 75.6567 81.0128 74.4023C81.843 74.3101 82.6903 74.2588 83.5513 74.2588C86.1653 74.2588 88.6661 74.6997 90.9988 75.52H90.9954Z" fill={GREEN}/>
       <path d="M57.0479 83.9009C57.8197 83.9009 58.4818 84.3999 58.7219 85.0938C57.0719 88.5938 56.156 92.5005 56.156 96.6226H47.8201C46.8458 96.6226 46.0534 95.8364 46.0534 94.8623V85.668C46.0534 84.6973 46.8424 83.9043 47.8201 83.9043H57.0479V83.9009Z" fill={GREEN}/>
       <path d="M41.3297 85.6646V94.8589C41.3297 95.8296 40.5407 96.6191 39.5596 96.6191H30.3352C29.361 96.6191 28.5651 95.833 28.5651 94.8589V85.6646C28.5651 84.6938 29.361 83.9009 30.3352 83.9009H39.5596C40.5407 83.9009 41.3297 84.6938 41.3297 85.6646Z" fill={GREEN}/>
@@ -62,7 +62,7 @@ function CalendarIcon() {
 // Step 2 — Share Your Goals (path with star target)
 function GoalIcon() {
   return (
-    <svg width="53" height="53" viewBox="0 0 124 125" fill="none" aria-hidden="true">
+    <svg width="95" height="95" viewBox="0 0 124 125" fill="none" aria-hidden="true">
       <path d="M101.963 80.3571C102.982 80.3571 103.981 80.442 104.967 80.5655C99.5599 74.5819 94.1157 74.122 92.4764 73.7411C87.4207 72.5655 81.2926 73.0655 78.0276 72.0565C77.6436 75.2366 68.321 85.6964 62.2124 92.256L59.5623 82.125C61.554 80.9643 61.9874 78.3929 61.9874 76.2545H51.9464C51.9464 78.375 52.3753 80.9182 54.3265 82.0967L51.7214 92.2545C45.6098 85.6935 36.2902 75.2336 35.9062 72.0565C32.6397 73.0699 26.5161 72.5699 21.4574 73.744C18.8867 74.3348 6.95148 75.0923 0.491928 97.1503C-0.383944 100.147 -0.0764888 103.394 1.3483 106.067C6.64553 115.994 34.4739 119.049 56.9706 119.048C65.1294 119.048 73.9841 118.641 82.2149 117.658C79.5423 113.821 77.9661 109.174 77.9661 104.167C77.9661 91.0387 88.733 80.3571 101.964 80.3571H101.963Z" fill={GREEN}/>
       <path d="M30.387 48.5848C32.7657 54.939 36.5331 61.1086 41.1945 65.6265C43.8311 68.183 46.7526 70.2068 49.8692 71.433C52.0124 72.2753 54.2455 72.7411 56.5417 72.7411C58.8379 72.7411 61.0725 72.2753 63.2142 71.433C66.4373 70.1637 69.4593 68.0431 72.1649 65.3571C76.7108 60.8542 80.3837 54.7798 82.7189 48.5327C84.5141 48.0089 86.3933 44.6726 87.1612 40.4107C87.9921 35.7887 87.2062 31.7559 85.4095 31.0818C85.4725 29.9539 85.5145 28.8125 85.5115 27.6429C85.468 10.8824 75.5649 1.13988 59.9492 0.10119C46.3342 -0.805059 36.0772 4.5625 31.4054 13.4836C29.8321 16.4851 28.9353 20.2396 28.5903 24.3199C28.0684 26.4449 27.7579 28.6518 27.7579 30.9345H27.8089C27.8089 30.9524 27.8044 30.9687 27.8044 30.9881C27.7699 30.9926 27.7384 30.994 27.7039 31C25.7137 31.3437 24.8064 35.5595 25.6807 40.4152C26.4801 44.8765 28.5093 48.3274 30.384 48.5878L30.387 48.5848Z" fill={GREEN}/>
       <path d="M108.252 84.1746C111.882 85.4478 115.048 87.6982 117.445 90.6108C120.404 94.2108 122.181 98.8168 122.181 103.833C122.181 108.85 120.474 113.29 117.614 116.855C113.793 121.617 107.927 124.667 101.339 124.667C95.4571 124.667 90.1424 122.232 86.3561 118.313C84.5665 116.467 83.1144 114.287 82.1081 111.877C81.0732 109.401 80.5 106.685 80.5 103.833C80.5 93.1286 88.582 84.3019 98.9855 83.1337C99.7561 83.0477 100.543 83 101.342 83C103.768 83 106.09 83.4106 108.255 84.1746H108.252Z" fill={GREEN}/>
@@ -74,7 +74,7 @@ function GoalIcon() {
 // Step 3 — Hair Loss Assessment (magnifier + star badge)
 function SearchIcon() {
   return (
-    <svg width="57" height="60" viewBox="0 0 133 139" fill="none" aria-hidden="true">
+    <svg width="102" height="108" viewBox="0 0 133 139" fill="none" aria-hidden="true">
       <path fillRule="evenodd" clipRule="evenodd" d="M110.071 93.3247C122.735 93.3247 133 103.552 133 116.162C133 128.773 122.735 139 110.071 139C97.4076 139 87.1426 128.776 87.1426 116.162C87.1426 103.549 97.4076 93.3247 110.071 93.3247ZM37.262 80.4141C7.4524 93.7734 2.73658 92.29 1.49217 108.369C0.247756 124.452 0 131.874 0 131.874H90.2987C86.8442 127.564 84.7776 122.107 84.7776 116.162C84.7776 104.284 93.0324 94.3258 104.139 91.6674C98.866 88.9249 90.828 85.9412 78.4936 80.4113L77.5899 80.3131L67.3221 116.039L61.4858 103.047V91.4319H62.474C63.9014 91.4319 65.0698 90.2709 65.0698 88.8464V84.8279C65.0698 83.4062 63.9014 82.2424 62.474 82.2424H53.3689C51.9415 82.2424 50.7731 83.4034 50.7731 84.8279V88.8464C50.7731 90.2681 51.9387 91.4319 53.3689 91.4319H54.2699V103.047L48.4307 116.039L38.1629 80.3131L37.2591 80.4113L37.262 80.4141ZM36.8791 6.12724C35.0913 4.09137 33.3288 2.0555 31.5608 0H59.0504C68.7298 0 71.1116 2.4509 76.2751 9.76713L76.368 9.90734H76.6524L76.9452 9.91295C88.8741 10.3841 87.0075 28.6873 86.0756 36.4409C87.7986 36.8392 88.539 38.1151 88.3842 39.8341C88.0745 43.2468 87.5931 46.2137 86.9089 48.8861C84.7439 57.3661 80.2955 63.1372 74.4507 69.5365C64.5855 81.8358 48.8108 82.7191 38.6105 67.9745C34.9364 62.6661 27.881 52.5092 27.881 45.6528C27.881 43.3422 28.2217 40.5856 29.3422 38.4852C27.6164 33.0731 26.8928 26.6906 27.6361 21.0513C28.6496 13.4042 31.2116 10.9169 36.8791 6.12444V6.12724Z" fill={GREEN}/>
       <ellipse cx="110.484" cy="116.698" rx="22.5157" ry="22.3022" fill={GREEN}/>
       <path d="M110.484 104.769L113.188 113.011H121.938L114.859 118.106L117.563 126.349L110.484 121.254L103.405 126.349L106.109 118.106L99.0304 113.011H107.78L110.484 104.769Z" fill={GOLD}/>
@@ -85,8 +85,8 @@ function SearchIcon() {
 // Step 4 — Personalized Treatment Plan (handshake + confirmation badge)
 function ClipboardIcon() {
   return (
-    <span style={{ position: 'relative', display: 'block', width: 62, height: 60 }}>
-      <svg width="62" height="35" viewBox="0 0 154 87.6722" fill="none" aria-hidden="true" style={{ position: 'absolute', left: 0, top: 12 }}>
+    <span style={{ position: 'relative', display: 'block', width: 111, height: 108 }}>
+      <svg width="111" height="63" viewBox="0 0 154 87.6722" fill="none" aria-hidden="true" style={{ position: 'absolute', left: 0, top: 22 }}>
         <path d="M86.2875 57.7782C84.9407 59.2129 90.866 62.9138 91.7954 64.2116C94.4629 66.6311 97.1566 69.0245 99.8045 71.4635C105.401 75.9274 98.0794 82.7848 93.3835 78.4349C89.4116 75.0079 85.4787 71.532 81.5231 68.0821C79.061 65.7702 79.1197 65.9626 76.9152 68.4603C75.8391 69.7223 80.4795 72.4808 81.2426 73.5797C83.4504 76.2144 92.128 81.1218 90.204 84.5619C88.8931 88.1063 84.2102 87.9824 81.5557 86.052C79.4393 84.526 77.5772 82.6413 75.6499 80.8642C75.3075 80.5479 74.9945 80.049 74.9325 79.5958C74.2575 74.1177 71.2899 71.6787 65.9679 71.0298C65.5961 65.154 62.3383 62.0563 56.4358 61.5737C56.5206 51.9773 44.1416 48.9318 39.2403 56.588C36.364 54.1685 33.5138 51.7197 30.6017 49.3524C29.6397 48.5698 30.38 47.9144 30.6409 47.3275C35.0302 37.692 39.3185 28.0272 43.871 18.4667C48.1103 20.0938 52.0986 23.4589 56.6641 20.9383C62.1459 18.6199 67.6375 16.0864 73.7455 16.5559C73.9346 16.9961 73.9379 17.0026 74.1303 17.4428C68.7658 23.123 61.5524 27.6848 57.8511 34.666C54.3357 43.6331 68.1299 50.7741 74.3096 43.3853C76.85 41.4353 79.8469 34.4932 83.4993 37.6464C92.3596 45.7232 101.213 53.8066 110.034 61.9258C112.334 64.042 112.774 65.8615 111.743 67.9321C110.191 71.0526 106.64 71.62 103.855 69.1744C99.3708 65.2355 94.913 61.2672 90.4127 57.3477C88.1952 55.4109 88.1593 55.4565 86.294 57.7782H86.2875Z" fill={GREEN}/>
         <path d="M123.63 48.2405C120.026 51.6545 116.651 54.85 113.139 58.176C104.406 50.1904 95.2391 42.0679 86.6038 33.8998C79.1523 27.8707 74.9488 36.1008 70.1909 40.4147C66.4929 44.3341 59.7034 38.9604 63.072 34.7345C68.0549 29.2565 73.3639 24.0882 78.4577 18.7145C80.7306 16.2918 83.4569 15.6983 86.4766 16.5852C91.0845 17.9906 95.4478 20.1753 99.9839 21.7763C103.555 22.3568 106.529 19.6243 109.979 18.4634C114.597 28.5326 119.175 38.5137 123.633 48.234L123.63 48.2405Z" fill={GREEN}/>
         <path d="M152.184 39.6908C146.845 26.9381 141.487 14.1919 136.188 1.4228C135.617 0.0532937 135.03 -0.243432 133.68 0.47393C127.732 3.63359 121.758 6.74759 115.754 9.79638C114.561 10.4029 114.391 10.9409 114.933 12.1474C121.383 26.4392 127.66 40.6886 134.111 54.9968C140.812 51.3154 147.334 47.7318 154 44.07C153.322 42.4364 152.758 41.0636 152.184 39.6941V39.6908Z" fill={GREEN}/>
@@ -95,7 +95,7 @@ function ClipboardIcon() {
         <path d="M56.6119 66.0604C60.7078 66.1354 63.4731 70.6777 60.5284 73.6188C58.0109 76.2307 54.8477 81.1088 50.8822 77.7958C49.1245 76.3285 48.5114 73.7004 49.8061 72.0113C51.6975 69.8559 53.7096 66.7028 56.6119 66.0572V66.0604Z" fill={GREEN}/>
         <path d="M59.0936 83.2152C59.7132 78.823 67.2038 72.1939 70.292 78.0991C72.4932 81.5327 68.6387 84.0728 66.6103 86.4303C64.0308 89.3552 59.1196 86.6357 59.0936 83.2152Z" fill={GREEN}/>
       </svg>
-      <svg width="26" height="26" viewBox="0 0 32.7475 32.2789" fill="none" aria-hidden="true" style={{ position: 'absolute', right: -4, top: 0 }}>
+      <svg width="47" height="47" viewBox="0 0 32.7475 32.2789" fill="none" aria-hidden="true" style={{ position: 'absolute', right: -7, top: 0 }}>
         <path d="M32.7475 16.1394C32.379 37.6603 0.365238 37.6571 0 16.1394C0.368499 -5.38144 32.3823 -5.37818 32.7475 16.1394Z" fill={GREEN}/>
         <path d="M15.6335 25.0347C12.5322 24.6597 12.9986 19.5469 6.68842 18.3046C3.94261 17.7307 4.90463 13.4298 7.63413 14.0852C9.38205 14.4667 12.8062 15.6405 15.3954 18.6926C16.4292 15.921 24.0177 4.24752 27.3276 8.12454C28.0353 9.08646 27.8266 10.4397 26.8613 11.1472C23.9981 13.2439 21.7251 15.8525 20.0979 18.8948C18.6076 20.9001 18.9043 25.1489 15.6302 25.0347H15.6335Z" fill="white"/>
       </svg>
@@ -247,15 +247,15 @@ interface Props {
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
 
 export default function SageHairLP({
-  heroFormId = 'REPLACE_WITH_HERO_FORM_ID',
-  bottomFormId = 'REPLACE_WITH_FOOTER_FORM_ID',
+  heroFormId = 'JRQUSXBB48Nt2DcTGCpM',
+  bottomFormId = 'gC3pfj36b8I5Xf5LnsJM',
 }: Props) {
   return (
     <div style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: TEXT }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="shc-hero" id="form" style={{ position: 'relative', minHeight: 780, overflow: 'hidden' }}>
+      <section className="shc-hero" id="form" style={{ position: 'relative', overflow: 'hidden' }}>
         <img
           src="/hero-photo-bg.jpg"
           alt=""
@@ -292,7 +292,7 @@ export default function SageHairLP({
           </p>
           <div className="shc-hero-nav-btns" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' as const }}>
             <a
-              href="tel:"
+              href="tel:+18482001644"
               style={{
                 background: WHITE,
                 color: '#000',
@@ -306,7 +306,7 @@ export default function SageHairLP({
                 whiteSpace: 'nowrap' as const,
               }}
             >
-              (XXX) XXX-XXXX
+              (848) 200-1644
             </a>
             <a
               href="#form"
@@ -329,26 +329,26 @@ export default function SageHairLP({
         </div>
 
         {/* Content — headline + form card */}
-        <div className="shc-hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: 1500, margin: '0 auto', padding: '0 48px' }}>
-          <div className="shc-hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: 40, alignItems: 'end', minHeight: 620, paddingTop: 60 }}>
+        <div className="shc-hero-content" style={{ position: 'relative', zIndex: 2, maxWidth: 1500, margin: '0 auto', padding: 'clamp(28px, 4vh, 56px) 48px' }}>
+          <div className="shc-hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: 40, alignItems: 'center' }}>
 
             {/* Left — headline */}
-            <div className="shc-hero-left" style={{ paddingBottom: 56 }}>
+            <div className="shc-hero-left" style={{ marginTop: 160 }}>
               <h1 className="shc-hero-h1" style={{
                 fontFamily: "'DM Serif Display', Georgia, serif",
                 fontWeight: 400,
-                fontSize: 56,
+                fontSize: 'clamp(26px, 3.4vw, 46px)',
                 color: WHITE,
-                lineHeight: 1.13,
+                lineHeight: 1.15,
                 marginBottom: 20,
-                maxWidth: 640,
+                maxWidth: 780,
               }}>
-                Medical Evaluation for <em style={{ fontStyle: 'italic' }}>Thinning Hair &amp; Hair Loss Conditions</em>
+                Medical Evaluation for<br /><em style={{ fontStyle: 'italic' }}>Thinning Hair &amp; Hair Loss Conditions</em>
               </h1>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 600,
-                fontSize: 20,
+                fontSize: 'clamp(16px, 1.6vw, 20px)',
                 color: WHITE,
                 marginBottom: 10,
                 lineHeight: 1.4,
@@ -359,7 +359,7 @@ export default function SageHairLP({
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 400,
-                fontSize: 16,
+                fontSize: 'clamp(14px, 1.2vw, 16px)',
                 color: WHITE,
                 marginBottom: 28,
                 lineHeight: 1.55,
@@ -372,13 +372,13 @@ export default function SageHairLP({
                 <p style={{
                   fontFamily: "'DM Sans', sans-serif",
                   fontWeight: 600,
-                  fontSize: 15,
+                  fontSize: 'clamp(13px, 1.1vw, 15px)',
                   color: WHITE,
                   lineHeight: 1.4,
                   margin: 0,
                 }}>
                   Patient-Centered Care<br />
-                  <span style={{ fontWeight: 400, fontSize: 13 }}>Patients appreciate our personalized, doctor-led approach.</span>
+                  <span style={{ fontWeight: 400, fontSize: 'clamp(12px, 1vw, 13px)' }}>Patients appreciate our personalized, doctor-led approach.</span>
                 </p>
               </div>
             </div>
@@ -392,30 +392,13 @@ export default function SageHairLP({
                 borderRadius: 16,
                 padding: '28px 28px 24px',
                 width: '100%',
+                maxHeight: 645,
+                overflow: 'hidden',
                 boxShadow: '10px 10px 10.1px rgba(0,0,0,0.54)',
               }}>
-                <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontWeight: 700,
-                  fontSize: 22,
-                  color: WHITE,
-                  marginBottom: 18,
-                  textAlign: 'center',
-                  lineHeight: 1.3,
-                }}>
-                  Request Your Evaluation
-                </p>
-                <GhlForm formId={heroFormId} height={400} formName="Request Your Evaluation - Sage Hair Clinic" />
-                <p style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontWeight: 400,
-                  fontSize: 12,
-                  color: 'rgba(255,255,255,0.7)',
-                  lineHeight: 1.5,
-                  marginTop: 16,
-                }}>
-                  I agree to receive marketing and informational text messages (including appointment, follow-up, and AI-assisted messages sent using automated technology) from Sage Hair Clinic at the number I provided. Consent is not a condition of receiving services or treatment. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. See our Privacy Policy and Terms.
-                </p>
+                <div style={{ width: '125%', transform: 'scale(0.8)', transformOrigin: 'top left' }}>
+                  <GhlForm formId={heroFormId} height={729} formName="Request Your Evaluation - Sage Hair Clinic" />
+                </div>
               </div>
             </div>
           </div>
@@ -439,7 +422,7 @@ export default function SageHairLP({
           <p style={{
             fontFamily: "'DM Sans', sans-serif",
             fontWeight: 500,
-            fontSize: 22,
+            fontSize: 25,
             color: TEXT,
             textAlign: 'center',
             marginBottom: 56,
@@ -468,22 +451,22 @@ export default function SageHairLP({
                   flexDirection: 'column',
                   alignItems: 'center',
                   textAlign: 'center',
-                  padding: '0 12px',
+                  padding: '0 4px',
                 }}
               >
                 <IconCircle>{step.icon}</IconCircle>
                 <h3 style={{
                   fontFamily: "'DM Serif Display', Georgia, serif",
                   fontWeight: 400,
-                  fontSize: 20,
+                  fontSize: 24,
                   color: TEXT,
                   textAlign: 'center',
                   lineHeight: 1.3,
-                  margin: '20px 0 8px',
+                  margin: '28px 0 8px',
                 }}>
                   {step.title}
                 </h3>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: '#555', margin: 0, lineHeight: 1.5 }}>
+                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 18, color: TEXT, margin: 0, lineHeight: 1.5 }}>
                   {step.text}
                 </p>
               </div>
@@ -1016,25 +999,16 @@ export default function SageHairLP({
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 16, color: TEXT, margin: '0 0 12px' }}>
                   {loc.address}<br />{loc.addressLine2}
                 </p>
-                <a href="tel:" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: GREEN }}>(XXX)</span>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: TEXT }}>XXX-XXXX</span>
+                <a href="tel:+18482001644" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: GREEN }}>(848)</span>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: TEXT }}>200-1644</span>
                 </a>
               </div>
             ))}
 
             {/* Form — RIGHT */}
             <div className="shc-form-col">
-              <p style={{
-                fontFamily: "'DM Serif Display', Georgia, serif",
-                fontWeight: 400,
-                fontSize: 24,
-                color: TEXT,
-                marginBottom: 16,
-              }}>
-                Request Your Evaluation
-              </p>
-              <GhlForm formId={bottomFormId} height={496} formName="Footer Form - Sage Hair Clinic" />
+              <GhlForm formId={bottomFormId} height={742} formName="Footer Form - Sage Hair Clinic" />
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: 400,

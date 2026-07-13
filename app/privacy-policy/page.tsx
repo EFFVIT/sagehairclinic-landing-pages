@@ -18,7 +18,7 @@ export default function PrivacyPolicyPage() {
       {/* Header */}
       <header style={{ background: WHITE, padding: '20px 64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', boxShadow: '0px 4px 22.7px 0px rgba(0,0,0,0.12)' }}>
         <p style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontSize: 26, color: TEXT, margin: 0 }}>Sage Hair Clinic</p>
-        <a href="tel:" style={{
+        <a href="tel:+18482001644" style={{
           border: '2px solid #2e2f2a',
           color: '#2e2f2a',
           fontFamily: "'DM Sans', sans-serif",
@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
           textDecoration: 'none',
           whiteSpace: 'nowrap' as const,
         }}>
-          (XXX) XXX-XXXX
+          (848) 200-1644
         </a>
       </header>
 
