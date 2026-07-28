@@ -17,6 +17,7 @@ export default function HairTransplantPage() {
         bottomFormId="gC3pfj36b8I5Xf5LnsJM"
         phoneHref="+17322051790"
         phoneDisplay="(732) 205-1790"
+        hideMoorestown
       />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"
