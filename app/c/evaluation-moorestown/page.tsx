@@ -15,6 +15,8 @@ export default function EvaluationMoorestownPage() {
       <SageHairLP
         heroFormId="Bz6dQVf0S97nyijuLRID"
         bottomFormId="RBDRZo6rfbZzUa5jV5ed"
+        phoneHref="+18563607159"
+        phoneDisplay="(856) 360-7159"
       />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"
