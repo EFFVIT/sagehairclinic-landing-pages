@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import SageHairLP from '@/components/SageHairLP'
 
 export const metadata: Metadata = {
@@ -10,9 +11,17 @@ export const metadata: Metadata = {
 
 export default function HairRestorationMoorestownPage() {
   return (
-    <SageHairLP
-      heroFormId="Bz6dQVf0S97nyijuLRID"
-      bottomFormId="RBDRZo6rfbZzUa5jV5ed"
-    />
+    <>
+      <SageHairLP
+        heroFormId="Bz6dQVf0S97nyijuLRID"
+        bottomFormId="RBDRZo6rfbZzUa5jV5ed"
+      />
+      <Script
+        src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6a68cb2bf2ad8308216b2048"
+        strategy="afterInteractive"
+      />
+    </>
   )
 }
