@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function HairTransplantMoorestownPage() {
   return (
     <SageHairLP
-      heroFormId="JRQUSXBB48Nt2DcTGCpM"
-      bottomFormId="gC3pfj36b8I5Xf5LnsJM"
+      heroFormId="Bz6dQVf0S97nyijuLRID"
+      bottomFormId="RBDRZo6rfbZzUa5jV5ed"
     />
   )
 }
