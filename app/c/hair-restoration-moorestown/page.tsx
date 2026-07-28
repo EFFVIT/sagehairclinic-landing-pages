@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import SageHairLP from '@/components/SageHairLP'
 
 export const metadata: Metadata = {
-  openGraph: { images: [{ url: "https://more.sagehairclinic.com/og/c-hair-restoration.webp", width: 1200, height: 630, alt: "Hair restoration consultation at Sage Hair Clinic" }] },
-  twitter: { card: "summary_large_image", images: ["https://more.sagehairclinic.com/og/c-hair-restoration.webp"] },
-  title: 'Hair Restoration Consultation | Sage Hair Clinic',
+  openGraph: { images: [{ url: "https://more.sagehairclinic.com/og/c-hair-restoration-moorestown.webp", width: 1200, height: 630, alt: "Hair restoration consultation at Sage Hair Clinic in Moorestown, NJ" }] },
+  twitter: { card: "summary_large_image", images: ["https://more.sagehairclinic.com/og/c-hair-restoration-moorestown.webp"] },
+  title: 'Hair Restoration Consultation in Moorestown, NJ | Sage Hair Clinic',
   robots: 'noindex, nofollow',
 }
 
-export default function HairRestorationPage() {
+export default function HairRestorationMoorestownPage() {
   return (
     <SageHairLP
       heroFormId="JRQUSXBB48Nt2DcTGCpM"
