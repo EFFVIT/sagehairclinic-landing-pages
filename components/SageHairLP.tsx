@@ -244,6 +244,7 @@ interface Props {
   bottomFormId?: string
   phoneHref?: string
   phoneDisplay?: string
+  hideMetuchen?: boolean
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
@@ -253,6 +254,7 @@ export default function SageHairLP({
   bottomFormId = 'gC3pfj36b8I5Xf5LnsJM',
   phoneHref = '+18482001644',
   phoneDisplay = '(848) 200-1644',
+  hideMetuchen = false,
 }: Props) {
   const [areaCode, ...localParts] = phoneDisplay.split(' ')
   const localNumber = localParts.join(' ')
@@ -972,11 +974,11 @@ export default function SageHairLP({
       <section className="shc-map-outer" style={{ background: FOOTER_BG, padding: '82px 48px 0' }}>
         <div style={{ maxWidth: 1300, margin: '0 auto' }}>
 
-          <div className="shc-map-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 32, alignItems: 'start' }}>
+          <div className="shc-map-form" style={{ display: 'grid', gridTemplateColumns: hideMetuchen ? '1fr 1fr' : '1fr 1fr 1fr', gap: 32, alignItems: 'start' }}>
 
             {/* Location cards */}
             {[
-              { photo: null, city: 'Metuchen, NJ', address: '171 Amboy Ave.', addressLine2: 'Metuchen, NJ 08840' },
+              ...(!hideMetuchen ? [{ photo: null, city: 'Metuchen, NJ', address: '171 Amboy Ave.', addressLine2: 'Metuchen, NJ 08840' }] : []),
               { photo: null, city: 'Moorestown, NJ', address: '704 E Main St A,', addressLine2: 'Moorestown, NJ 08057' },
             ].map((loc, i) => (
               <div key={i} className="shc-map-col">
