@@ -242,6 +242,8 @@ function FaqSection() {
 interface Props {
   heroFormId?: string
   bottomFormId?: string
+  phoneHref?: string
+  phoneDisplay?: string
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
@@ -249,7 +251,11 @@ interface Props {
 export default function SageHairLP({
   heroFormId = 'JRQUSXBB48Nt2DcTGCpM',
   bottomFormId = 'gC3pfj36b8I5Xf5LnsJM',
+  phoneHref = '+18482001644',
+  phoneDisplay = '(848) 200-1644',
 }: Props) {
+  const [areaCode, ...localParts] = phoneDisplay.split(' ')
+  const localNumber = localParts.join(' ')
   return (
     <div style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: TEXT }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
@@ -292,7 +298,7 @@ export default function SageHairLP({
           </p>
           <div className="shc-hero-nav-btns" style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' as const }}>
             <a
-              href="tel:+18482001644"
+              href={`tel:${phoneHref}`}
               style={{
                 background: WHITE,
                 color: '#000',
@@ -306,7 +312,7 @@ export default function SageHairLP({
                 whiteSpace: 'nowrap' as const,
               }}
             >
-              (848) 200-1644
+              {phoneDisplay}
             </a>
             <a
               href="#form"
@@ -999,9 +1005,9 @@ export default function SageHairLP({
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 16, color: TEXT, margin: '0 0 12px' }}>
                   {loc.address}<br />{loc.addressLine2}
                 </p>
-                <a href="tel:+18482001644" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: GREEN }}>(848)</span>
-                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: TEXT }}>200-1644</span>
+                <a href={`tel:${phoneHref}`} style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: GREEN }}>{areaCode}</span>
+                  <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 20, color: TEXT }}>{localNumber}</span>
                 </a>
               </div>
             ))}
