@@ -68,13 +68,11 @@ const BENEFITS = [
 ]
 
 const FAQ_ITEMS = [
-  { q: 'How long does the ARTAS® procedure take?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'When will I see results?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'Is the ARTAS® procedure painful?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'Will my transplanted hair look natural?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'How much does an ARTAS® hair transplant cost?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'Am I a good candidate for ARTAS® Robotic FUE?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'What is the recovery time?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
+  { q: 'Are hair transplant procedures painful?', a: 'During the hair transplant procedure, local anesthesia ensures your complete comfort -- you won\'t feel a thing. Afterwards, most patients experience only minimal discomfort. Over-the-counter pain relievers are usually sufficient if there\'s any discomfort at all.' },
+  { q: 'How long is recovery?', a: 'Recovery time varies, but most patients resume light activities within a day or two and return to normal activities within a week. For best results, follow all post-procedure instructions, follow-up visits, and recommendations from Dr. Rajesh Patel.' },
+  { q: 'Are the results permanent?', a: 'Yes -- because your own natural hair follicles are being transplanted, the results are generally permanent, assuming you follow the post-procedure instructions. Hair will begin to grow in the transplant area within 3-6 months, with full results visible by 12-18 months.' },
+  { q: 'Am I a good candidate for ARTAS® Robotic FUE?', a: 'Most men and women experiencing hair thinning or hair loss are candidates for ARTAS®. The best way to find out is through a free consultation with Dr. Rajesh Patel at Sage Hair Clinic in Moorestown and Metuchen, NJ, who will assess your scalp, donor area, and goals to create a personalized plan.' },
+  { q: 'How much does a hair transplant cost?', a: 'Most patients invest between $[x,xxx] and $[x,xxx], depending on the extent of hair loss and the numbers of grafts required. During your free consultation, you\'ll receive a personalized quote with completely transparent pricing: no hidden fees, no surprises. We also offer flexible financing options with low monthly payments, so cost never has to stand between you and your confidence.' },
 ]
 
 // Real before/after pairs - approved via Figma, verified pair-by-pair against

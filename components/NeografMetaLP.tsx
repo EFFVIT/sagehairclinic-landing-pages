@@ -66,13 +66,13 @@ const BENEFITS = [
 ]
 
 const FAQ_ITEMS = [
-  { q: 'How long does the NeoGraft® procedure take?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'When will I see results?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'Is the NeoGraft® procedure painful?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'Will my transplanted hair look natural?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'How much does a NeoGraft® hair transplant cost?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'Am I a good candidate for NeoGraft® Automated FUE?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
-  { q: 'What is the recovery time?', a: '[Answer pending - awaiting content from Sage Hair Clinic]' },
+  { q: 'How long does the NeoGraft® procedure take?', a: 'Most NeoGraft® procedures take between 4–8 hours depending on the number of grafts needed. The procedure is completed in a single in-office session under local anesthesia. You\'re awake and comfortable throughout.' },
+  { q: 'When will I see results?', a: 'Transplanted hair begins growing at 3–4 months and continues improving through month 18. Most patients see significant density by month 9. Full final results are typically visible at 12–18 months.' },
+  { q: 'Is the NeoGraft® procedure painful?', a: 'During the procedure, local anesthesia ensures your complete comfort -- you won\'t feel a thing. Afterward, most patients experience only mild soreness for 1–2 days. Over-the-counter pain relievers are usually all that\'s needed.' },
+  { q: 'Will my transplanted hair look natural?', a: 'Yes. NeoGraft®\'s automated precision allows Dr. Rajesh Patel to place each follicle at the exact angle, depth, and direction that matches your natural growth pattern. The result is a hairline that is completely undetectable - because it is your own hair.' },
+  { q: 'How much does a NeoGraft® hair transplant cost?', a: 'Most patients invest between $[X,XXX] and $[X,XXX], depending on the extent of hair loss and the number of grafts required. During your free consultation, you\'ll receive a personalized quote with completely transparent pricing - no hidden fees, no surprises. Flexible financing options with low monthly payments are available.' },
+  { q: 'Am I a good candidate for NeoGraft® Automated FUE?', a: 'Most men and women experiencing hair thinning or loss are good candidates. The best way to know for certain is a free consultation with Dr. Rajesh Patel at Sage Hair Clinic in Moorestown and Metuchen, NJ, who will assess your scalp, donor area, and goals to create a personalized plan.' },
+  { q: 'What is the recovery time?', a: 'Most patients return to work within 3–5 days and resume all normal activities within a week. There is no scalpel incision and no stitches to remove. Follow all post-procedure guidance from Dr. Rajesh Patel for best results.' },
 ]
 
 // Real before/after pairs - same patients/photos used on the ARTAS page since
