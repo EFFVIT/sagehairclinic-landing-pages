@@ -6,10 +6,8 @@ export const metadata = {
   title: 'Sage Hair Clinic',
 }
 
-// NOTE: FB Pixel ID below is a placeholder — replace with Sage Hair Clinic's
-// real ID once provided. Do not reuse another client's ID.
 const GTM_ID = 'GTM-MZ7TR95R'
-const FB_PIXEL_ID = '0000000000000000'
+const FB_PIXEL_ID = '1925381574824233'
 
 export default function RootLayout({
   children,
