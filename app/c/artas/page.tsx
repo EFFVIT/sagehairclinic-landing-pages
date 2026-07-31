@@ -9,9 +9,8 @@ export const metadata: Metadata = {
 export default function ArtasConsultPage() {
   return (
     <ArtasConsultLP
-      // TODO: replace with a real RootLogic form ID dedicated to the ARTAS campaign
-      heroFormId="TODO_ARTAS_C_HERO_FORM_ID"
-      bottomFormId="TODO_ARTAS_C_FOOTER_FORM_ID"
+      heroFormId="JRQUSXBB48Nt2DcTGCpM"
+      bottomFormId="gC3pfj36b8I5Xf5LnsJM"
     />
   )
 }
