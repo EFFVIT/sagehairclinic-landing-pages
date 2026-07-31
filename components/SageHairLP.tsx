@@ -853,7 +853,7 @@ export default function SageHairLP({
                 marginBottom: 24,
                 fontStyle: 'italic',
               }}>
-                [Financing terms pending confirmation] The above payment was calculated at 21.90% APR over 60 months. This purchase would have a total cost of $11,453. A down payment in the amount of the monthly payment amount is due at the time of purchase. Payment amount rounded up to the nearest whole number. 0% APR and other promotional rates subject to eligibility. Payment options through Cherry Technologies, Inc. are issued by the following lending partners: withcherry.com/lending-partners. See withcherry.com/terms for details.
+                The above payment was calculated at 21.90% APR over 60 months. This purchase would have a total cost of $11,453. A down payment in the amount of the monthly payment amount is due at the time of purchase. Payment amount rounded up to the nearest whole number. 0% APR and other promotional rates subject to eligibility. Payment options through Cherry Technologies, Inc. are issued by the following lending partners: withcherry.com/lending-partners. See withcherry.com/terms for details.
               </p>
               <a
                 href="#form"
