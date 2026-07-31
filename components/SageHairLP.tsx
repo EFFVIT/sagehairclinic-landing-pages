@@ -678,8 +678,11 @@ export default function SageHairLP({
               }}>
                 Verified patient experiences from real consultations and care.
               </p>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: '#666', marginBottom: 20, fontStyle: 'italic' }}>
-                [Bio copy pending - awaiting Dr. Patel&apos;s credentials, education, and experience details from Sage Hair Clinic. This section will be replaced with real biographical content once provided.]
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: '#666', marginBottom: 20 }}>
+                Dr. Rajesh Patel, D.O. is a Board Certified Family Medicine physician and Director of Medical Aesthetics at Sage Hair Clinic in Moorestown and Metuchen, NJ. He trained directly under Dr. Miguel Canales, former Medical Director of Restoration Robotics and a pioneer of the ARTAS Robotic System, and holds certifications in hair restoration (Arizona Aesthetics), Alma TED (Alma), and injectable hair restoration technique (Empire Medical Training).
+              </p>
+              <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: '#666', marginBottom: 20 }}>
+                At Sage Hair Clinic, every evaluation begins with a certified trichologist. Patients identified as strong candidates are then evaluated personally by Dr. Patel, who reviews each case and determines the right treatment plan before any procedure is recommended.
               </p>
               <a
                 href="#form"
