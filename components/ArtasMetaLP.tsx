@@ -124,10 +124,8 @@ export default function ArtasMetaLP({
             <a href="#form" style={{ background: FOREST, color: WHITE, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15, borderRadius: 62, padding: '13px 20px', textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
               Book a Free Consultation
             </a>
-            {/* Phone: placeholder - waiting on client to confirm which tracking number to use for
-                Meta traffic (do not reuse the Google tracking number (848) 200-1644) */}
-            <a href="#" style={{ color: WHITE, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: 1, textTransform: 'uppercase' as const, textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
-              Call Us XXX XXX XXXX
+            <a href="tel:+18562427800" style={{ color: WHITE, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: 1, textTransform: 'uppercase' as const, textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
+              Call Us +1 856-242-7800
             </a>
           </div>
         </div>
