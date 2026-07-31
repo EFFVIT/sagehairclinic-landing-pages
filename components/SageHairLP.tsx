@@ -170,14 +170,11 @@ function QuoteIcon() {
 
 // ── FAQ ─────────────────────────────────────────────────────────────────────
 // NOTE: Sage has not provided real FAQ content yet — matches the Figma
-// placeholder copy exactly ("Frequently Asked Question Goes Here") so this
-// is an obvious TODO for whoever reviews the page next, not fabricated
-// medical content.
 const FAQ_ITEMS = [
-  { q: 'Frequently Asked Question Goes Here', a: '[Answer pending — awaiting FAQ content from Sage Hair Clinic]' },
-  { q: 'Frequently Asked Question Goes Here', a: '[Answer pending — awaiting FAQ content from Sage Hair Clinic]' },
-  { q: 'Frequently Asked Question Goes Here', a: '[Answer pending — awaiting FAQ content from Sage Hair Clinic]' },
-  { q: 'Frequently Asked Question Goes Here', a: '[Answer pending — awaiting FAQ content from Sage Hair Clinic]' },
+  { q: 'What is alopecia, and are there different types?', a: 'Alopecia is a medical term for hair loss. There are several types, including androgenetic alopecia (male or female pattern hair loss), alopecia areata (patchy loss related to immune activity), and others caused by hormonal changes, nutritional deficiencies, or scalp conditions. A medical evaluation is the only way to determine which type you have and what options may be appropriate.' },
+  { q: 'Is hair loss always permanent?', a: 'Not always. Some forms of hair loss are temporary and may resolve with treatment of the underlying cause. Others, like androgenetic alopecia, are progressive. Determining whether hair loss is permanent requires a clinical assessment. Your evaluation will clarify what type of hair loss you have and what your options are.' },
+  { q: 'How is hair loss typically evaluated by a medical professional?', a: 'A hair loss evaluation generally includes a review of your health history, an examination of your scalp and hair density, and an assessment of your hair loss pattern. Your provider will discuss your goals and explain what findings may indicate about cause and treatment options.' },
+  { q: 'Can stress, hormones, or lifestyle factors affect hair loss?', a: 'Yes. Stress, hormonal changes, nutritional deficiencies, and certain medications can all contribute to or accelerate hair loss in some individuals. During your evaluation, your provider will review relevant personal history to understand any contributing factors.' },
 ]
 
 function FaqSection() {
