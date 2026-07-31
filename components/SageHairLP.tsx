@@ -735,9 +735,9 @@ export default function SageHairLP({
           <div className="shc-reviews-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
               {
-                text: '[Testimonial pending - the placeholder review in this slot was not specific to hair restoration and has been removed. Replace with a real, consented patient testimonial.]',
-                name: null,
-                pending: true,
+                text: 'Excellent work! Very professional. I encourage everyone: if you\'re losing your hair, consider investing in yourself. This is the way to go—don\'t rely on temporary fixes; instead, choose a secure method. The best investment you can make is in yourself.',
+                name: 'Carlos Torres',
+                pending: false,
               },
               {
                 text: 'Dr Patel and his staff were amazing! Very thorough and professional and cared about my concerns.',
