@@ -9,9 +9,8 @@ export const metadata: Metadata = {
 export default function ArtasMetaPage() {
   return (
     <ArtasMetaLP
-      // TODO: replace with a real RootLogic form ID dedicated to the ARTAS campaign
-      heroFormId="TODO_ARTAS_HERO_FORM_ID"
-      bottomFormId="TODO_ARTAS_FOOTER_FORM_ID"
+      heroFormId="WLibZyahE99rBFolZNrs"
+      bottomFormId="IjT7GToDzvZ5SHNDu7un"
     />
   )
 }
