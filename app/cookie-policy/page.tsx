@@ -42,7 +42,7 @@ export default function CookiePolicyPage() {
       {/* Content */}
       <main style={{ maxWidth: 900, margin: '0 auto', padding: '56px 48px' }}>
 
-        <Heading>Last Updated: [Pending]</Heading>
+        <Heading>Last Updated: July 31, 2026</Heading>
 
         <p style={P}>
           This Cookie Policy explains how Sage Hair Clinic (&ldquo;we&rdquo;, &ldquo;us&rdquo; and &ldquo;ours&rdquo;) uses cookies and similar technologies to recognize you when you visit our websites at (<a href="https://www.sagehairclinic.com" style={{ color: GREEN }}>https://www.sagehairclinic.com</a>). It explains what these technologies are and why we use them, as well as your rights to control our use of them.

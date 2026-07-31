@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
       {/* Content */}
       <main style={{ maxWidth: 900, margin: '0 auto', padding: '56px 48px' }}>
 
-        <Heading>Last Updated: [Pending]</Heading>
+        <Heading>Last Updated: July 31, 2026</Heading>
 
         <p style={P}>
           Thank you for choosing to be part of our community at Sage Hair Clinic (&ldquo;company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at <a href="mailto:info@sagehairclinic.com" style={{ color: GREEN }}>info@sagehairclinic.com</a>.
