@@ -981,7 +981,7 @@ export default function SageHairLP({
             {/* Location cards */}
             {[
               ...(!hideMetuchen ? [{ mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.8450516983175!2d-74.3554982!3d40.5370975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3b76038c8ebf7%3A0xb2c938a8292eb5ff!2sSage%20Revive!5e1!3m2!1sen!2sus!4v1785520258481!5m2!1sen!2sus', city: 'Metuchen, NJ', address: '171 Amboy Ave.', addressLine2: 'Metuchen, NJ 08840' }] : []),
-              ...(!hideMoorestown ? [{ mapSrc: null, city: 'Moorestown, NJ', address: '704 E Main St A,', addressLine2: 'Moorestown, NJ 08057' }] : []),
+              ...(!hideMoorestown ? [{ mapSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.9724739716685!2d-74.9206979!3d39.97203519999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c14b1e8a77fa97%3A0x97322b9376fc18e1!2sSage%20Revive%2C%20Moorestown%20NJ!5e1!3m2!1sen!2sus!4v1785520306094!5m2!1sen!2sus', city: 'Moorestown, NJ', address: '704 E Main St A,', addressLine2: 'Moorestown, NJ 08057' }] : []),
             ].map((loc, i) => (
               <div key={i} className="shc-map-col">
                 <div style={{ position: 'relative', borderRadius: 16, overflow: 'hidden', minHeight: 260, background: '#c4c4c4' }}>
