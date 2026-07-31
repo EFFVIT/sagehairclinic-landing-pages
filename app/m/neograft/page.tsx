@@ -9,9 +9,8 @@ export const metadata: Metadata = {
 export default function NeografMetaPage() {
   return (
     <NeografMetaLP
-      // TODO: replace with a real RootLogic form ID dedicated to the NeoGraft campaign
-      heroFormId="TODO_NEOGRAFT_HERO_FORM_ID"
-      bottomFormId="TODO_NEOGRAFT_FOOTER_FORM_ID"
+      heroFormId="QpqHZd8KuIEu2PPyFrCc"
+      bottomFormId="KioupFfJA74fpfcwVsIg"
     />
   )
 }
