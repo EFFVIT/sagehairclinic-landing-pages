@@ -36,8 +36,8 @@ function PlusIcon() {
 // procedure-specific, so both used here (rather than one per page) now that
 // this is a real 2-slide carousel matching the design's 3-dot indicator intent.
 const TESTIMONIALS = [
-  { quote: 'Dr Patel and his staff were amazing! Very thorough and professional and cared about my concerns.', name: 'Frances Quiles' },
-  { quote: 'My experience at Dr. Patel’s office was spectacular. The office staff is very courteous & attentive. It was like a piece of cake. Thanks Doc.', name: 'Jacqueline Verywell' },
+  { quote: 'Dr Patel and his staff were amazing! Very thorough and professional and cared about my concerns.', name: 'F.Q' },
+  { quote: 'My experience at Dr. Patel’s office was spectacular. The office staff is very courteous & attentive. It was like a piece of cake. Thanks Doc.', name: 'J.V' },
 ]
 
 const WHY_CHOOSE_ITEMS = [

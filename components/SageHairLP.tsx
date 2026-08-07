@@ -733,17 +733,17 @@ export default function SageHairLP({
             {[
               {
                 text: 'Excellent work! Very professional. I encourage everyone: if you\'re losing your hair, consider investing in yourself. This is the way to go—don\'t rely on temporary fixes; instead, choose a secure method. The best investment you can make is in yourself.',
-                name: 'Carlos Torres',
+                name: 'C.T',
                 pending: false,
               },
               {
                 text: 'Dr Patel and his staff were amazing! Very thorough and professional and cared about my concerns.',
-                name: 'Frances Quiles',
+                name: 'F.Q',
                 pending: false,
               },
               {
                 text: 'My experience at Dr. Patel’s office was spectacular. The office staff is very courteous & attentive. It was like a piece of cake. Thanks Doc.',
-                name: 'Jacqueline Verywell',
+                name: 'J.V',
                 pending: false,
               },
             ].map((review, i) => (
