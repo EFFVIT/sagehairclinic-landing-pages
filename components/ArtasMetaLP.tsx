@@ -124,8 +124,8 @@ export default function ArtasMetaLP({
             <a href="#form" style={{ background: FOREST, color: WHITE, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 15, borderRadius: 62, padding: '13px 20px', textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
               Book a Free Consultation
             </a>
-            <a href="tel:+17326318461" style={{ color: WHITE, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: 1, textTransform: 'uppercase' as const, textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
-              Call Us +1 732-631-8461
+            <a href="tel:+18483087293" style={{ color: WHITE, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: 1, textTransform: 'uppercase' as const, textDecoration: 'none', whiteSpace: 'nowrap' as const }}>
+              Call Us +1 848-308-7293
             </a>
           </div>
         </div>
