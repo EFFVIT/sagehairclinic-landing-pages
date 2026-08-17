@@ -2,6 +2,7 @@
 import { Suspense, useState } from 'react'
 import GhlForm from './GhlForm'
 import GclidCapture from './GclidCapture'
+import DniSwap from './DniSwap'
 
 // ── DESIGN TOKENS ──────────────────────────────────────────────────────────
 const GREEN   = '#507a60'
@@ -171,8 +172,8 @@ function QuoteIcon() {
 // ── FAQ ─────────────────────────────────────────────────────────────────────
 // NOTE: Sage has not provided real FAQ content yet — matches the Figma
 const FAQ_ITEMS = [
-  { q: 'What is alopecia, and are there different types?', a: 'Alopecia is a medical term for hair loss. There are several types, including androgenetic alopecia (male or female pattern hair loss), alopecia areata (patchy loss related to immune activity), and others caused by hormonal changes, nutritional deficiencies, or scalp conditions. A medical evaluation is the only way to determine which type you have and what options may be appropriate.' },
-  { q: 'Is hair loss always permanent?', a: 'Not always. Some forms of hair loss are temporary and may resolve with treatment of the underlying cause. Others, like androgenetic alopecia, are progressive. Determining whether hair loss is permanent requires a clinical assessment. Your evaluation will clarify what type of hair loss you have and what your options are.' },
+  { q: 'What is alopecia, and are there different types?', a: 'Alopecia is a medical term for hair loss. There are several types, including androgenetic alopecia (male or female pattern hair loss), alopecia areata (patchy loss related to immune activity), and others caused by hormonal changes, nutritional deficiencies, or scalp conditions. A medical evaluation is the only way to determine which type is present and what options may be appropriate.' },
+  { q: 'Is hair loss always permanent?', a: 'Not always. Some forms of hair loss are temporary and may resolve with treatment of the underlying cause. Others, like androgenetic alopecia, are progressive. Determining whether hair loss is permanent requires a clinical assessment. An evaluation will clarify the type of hair loss involved and the options that follow from it.' },
   { q: 'How is hair loss typically evaluated by a medical professional?', a: 'A hair loss evaluation generally includes a review of your health history, an examination of your scalp and hair density, and an assessment of your hair loss pattern. Your provider will discuss your goals and explain what findings may indicate about cause and treatment options.' },
   { q: 'Can stress, hormones, or lifestyle factors affect hair loss?', a: 'Yes. Stress, hormonal changes, nutritional deficiencies, and certain medications can all contribute to or accelerate hair loss in some individuals. During your evaluation, your provider will review relevant personal history to understand any contributing factors.' },
 ]
@@ -243,6 +244,14 @@ interface Props {
   phoneDisplay?: string
   hideMetuchen?: boolean
   hideMoorestown?: boolean
+  /**
+   * EFFVIT DNI pool key (`dni_pools.client_id`). Moorestown pages use `sage`.
+   * Metuchen pages use `sage-metuchen`, which is NOT provisioned yet — the
+   * lease call returns no number and the static line stays, which is the
+   * intended fallback. Provisioning it needs a `clients` row first, because
+   * `dni_pools.client_id` is a FK to it.
+   */
+  dniClient?: string
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
@@ -254,12 +263,15 @@ export default function SageHairLP({
   phoneDisplay = '(848) 200-1644',
   hideMetuchen = false,
   hideMoorestown = false,
+  dniClient = 'sage',
 }: Props) {
   const [areaCode, ...localParts] = phoneDisplay.split(' ')
   const localNumber = localParts.join(' ')
+  const dniDigits = phoneHref.replace(/\D/g, '').replace(/^1/, '')
   return (
     <div style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: TEXT }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
+      <DniSwap client={dniClient} defaultDigits={dniDigits} />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="shc-hero" id="form" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -511,7 +523,7 @@ export default function SageHairLP({
             marginTop: 12,
             lineHeight: 'normal',
           }}>
-            You&apos;re in the right place. Most patients leave their first evaluation with a clear plan.
+            You&apos;re in the right place. Every first evaluation ends with a clear explanation of the options.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 28 }}>
             <a
@@ -579,10 +591,10 @@ export default function SageHairLP({
             marginBottom: 48,
           }}>
             {[
-              { title: 'Designed Around Your Evaluation Findings', text: 'Personalized plans based on your stage, evaluation findings, and goals.' },
-              { title: 'Visible, Measurable Progress', text: 'Track changes over time through follow-up assessments.' },
-              { title: 'Guidance Focused on Healthy-Looking Hair Over Time', text: 'Recommendations based on proven medical and appearance-supporting approaches.' },
-              { title: 'Safe Care. Proven Protocols.', text: 'Strict standards for consistent, high-quality patient care.' },
+              { title: 'Designed Around Your Evaluation Findings', text: 'Personalized plans based on evaluation findings and goals.' },
+              { title: 'Progress Tracked Over Time', text: 'Track changes over time through follow-up assessments.' },
+              { title: 'Guidance Focused on Healthy-Looking Hair Over Time', text: 'Recommendations based on established medical and appearance-supporting approaches.' },
+              { title: 'Safe Care. Established Protocols.', text: 'Strict standards for consistent, high-quality patient care.' },
               { title: 'Tailored to You', text: 'Your plan is based on your evaluation, goals, and long-term hair needs.' },
               { title: 'Trusted by Many', text: 'Real patients. Real reviews. Real experiences.' },
               { title: 'Step-by-Step Guidance', text: 'Know what to expect during your evaluation and throughout your care plan.' },
@@ -663,7 +675,7 @@ export default function SageHairLP({
                 color: TEXT,
                 marginBottom: 16,
               }}>
-                Dr. Rajesh Patel: Specialist in <em style={{ fontStyle: 'italic' }}>Hair Loss Evaluation &amp; Treatment Planning</em>
+                Dr. Rajesh Patel: Focused on <em style={{ fontStyle: 'italic' }}>Hair Loss Evaluation &amp; Treatment Planning</em>
               </h2>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -676,7 +688,7 @@ export default function SageHairLP({
                 Verified patient experiences from real consultations and care.
               </p>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: '#666', marginBottom: 20 }}>
-                Dr. Rajesh Patel, D.O. is a Board Certified Family Medicine physician and Director of Medical Aesthetics at Sage Hair Clinic in Moorestown and Metuchen, NJ. He trained directly under Dr. Miguel Canales, former Medical Director of Restoration Robotics and a pioneer of the ARTAS Robotic System, and holds certifications in hair restoration (Arizona Aesthetics), Alma TED (Alma), and injectable hair restoration technique (Empire Medical Training).
+                Dr. Rajesh Patel, D.O. is a Board Certified Family Medicine physician and Director of Medical Aesthetics at Sage Hair Clinic in Moorestown and Metuchen, NJ. He trained directly under Dr. Miguel Canales, former Medical Director of Restoration Robotics and a pioneer of the ARTAS Robotic System, and holds certifications in hair restoration (Arizona Aesthetics).
               </p>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: 17, lineHeight: 1.7, color: '#666', marginBottom: 20 }}>
                 At Sage Hair Clinic, every evaluation begins with a certified trichologist. Patients identified as strong candidates are then evaluated personally by Dr. Patel, who reviews each case and determines the right treatment plan before any procedure is recommended.
@@ -732,7 +744,10 @@ export default function SageHairLP({
           <div className="shc-reviews-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
             {[
               {
-                text: 'Excellent work! Very professional. I encourage everyone: if you\'re losing your hair, consider investing in yourself. This is the way to go—don\'t rely on temporary fixes; instead, choose a secure method. The best investment you can make is in yourself.',
+                // Trimmed 2026-08-17, not rewritten: the removed clause addressed the
+                // reader's own hair loss in the second person (§6 failure modes 1 and 2).
+                // Everything retained is verbatim; the ellipsis marks the cut.
+                text: 'Excellent work! Very professional… don\'t rely on temporary fixes; instead, choose a secure method. The best investment you can make is in yourself.',
                 name: 'C.T',
                 pending: false,
               },

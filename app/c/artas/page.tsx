@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import ArtasConsultLP from '@/components/ArtasConsultLP'
 
 export const metadata: Metadata = {
@@ -14,8 +13,11 @@ export default function ArtasConsultPage() {
         heroFormId="JRQUSXBB48Nt2DcTGCpM"
         bottomFormId="gC3pfj36b8I5Xf5LnsJM"
       />
-      <Script src="https://backend.leadconnectorhq.com/appengine/loc/In7QtzS6f6h8Znf5DRAZ/pool/B0cJj1hmJ55yU6dCeOdL/number_pool.js" strategy="afterInteractive" />
-      <Script src="https://backend.leadconnectorhq.com/appengine/js/user_session.js" strategy="afterInteractive" />
+      {/* GHL's native number_pool.js + user_session.js removed 2026-08-17. Both
+          pools answered {"isActive":false}, so nothing swapped, and ClickUp
+          86bb9qbn0 specifies the EFFVIT dni_pools path instead. DniSwap is NOT
+          wired here yet: this page displays (848) 200-1644, which is neither
+          office's published line, so it needs a pool/number decision first. */}
     </>
   )
 }

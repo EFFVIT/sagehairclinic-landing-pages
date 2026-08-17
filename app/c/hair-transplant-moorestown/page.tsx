@@ -18,19 +18,12 @@ export default function HairTransplantMoorestownPage() {
         phoneHref="+18563607159"
         phoneDisplay="(856) 360-7159"
         hideMetuchen
+        dniClient="sage"
       />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
         data-widget-id="6a68cb2bf2ad8308216b2048"
-        strategy="afterInteractive"
-      />
-      <Script
-        src="https://backend.leadconnectorhq.com/appengine/loc/In7QtzS6f6h8Znf5DRAZ/pool/8jsmq7SZkDjaNUz9w2SK/number_pool.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        src="https://backend.leadconnectorhq.com/appengine/js/user_session.js"
         strategy="afterInteractive"
       />
     </>
