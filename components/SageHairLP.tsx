@@ -271,7 +271,7 @@ export default function SageHairLP({
   return (
     <div style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: TEXT }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
-      <DniSwap client={dniClient} defaultDigits={dniDigits} />
+      {dniClient && <DniSwap client={dniClient} defaultDigits={dniDigits} />}
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="shc-hero" style={{ position: 'relative', overflow: 'hidden' }}>
