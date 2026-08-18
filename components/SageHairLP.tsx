@@ -274,7 +274,7 @@ export default function SageHairLP({
       <DniSwap client={dniClient} defaultDigits={dniDigits} />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="shc-hero" id="form" style={{ position: 'relative', overflow: 'hidden' }}>
+      <section className="shc-hero" style={{ position: 'relative', overflow: 'hidden' }}>
         <img
           src="/hero-photo-bg.jpg"
           alt=""
@@ -403,7 +403,15 @@ export default function SageHairLP({
             </div>
 
             {/* Right — glass form card */}
-            <div className="shc-hero-right">
+            {/* The #form anchor lives HERE, on the form card, not on the hero
+                section. It was on <section className="shc-hero" id="form">, which
+                sits at scroll 0 — so every "Book Your Consultation" CTA jumped to
+                a target the visitor was already looking at and the page did not
+                move. On mobile that left ~88px of a 758px form on screen and the
+                primary CTA appeared to do nothing. lp-qa reported it 73 times
+                across the fleet's pages and it stayed open for 18 days.
+                scroll-margin-top keeps the card clear of the sticky header. */}
+            <div className="shc-hero-right" id="form" style={{ scrollMarginTop: 96 }}>
               <div style={{
                 background: 'rgba(255,255,255,0.12)',
                 backdropFilter: 'blur(16px)',
