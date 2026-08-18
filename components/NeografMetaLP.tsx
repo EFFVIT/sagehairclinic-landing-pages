@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import GhlForm from './GhlForm'
 import GclidCapture from './GclidCapture'
+import DniSwap from './DniSwap'
 import TestimonialCarousel from './TestimonialCarousel'
 
 // ── DESIGN TOKENS ──
@@ -42,12 +43,12 @@ const WHY_CHOOSE_ITEMS = [
   {
     n: '01',
     title: 'Pneumatic Precision',
-    text: 'The NeoGraft® system uses automated pneumatic harvesting to extract and implant follicles with consistent precision - reducing handling, preserving graft integrity, and delivering a denser, more natural result.',
+    text: 'The NeoGraft system uses automated pneumatic harvesting to extract and implant follicles with consistent precision - reducing handling, preserving graft integrity, and delivering a denser, more natural result.',
   },
   {
     n: '02',
     title: 'No Linear Scarring',
-    text: 'Traditional strip methods leave a visible scar across the back of your head. NeoGraft® extracts individual follicles, leaving no linear scar - just tiny dots that heal.',
+    text: 'Traditional strip methods leave a visible scar across the back of your head. NeoGraft extracts individual follicles, leaving no linear scar - just tiny dots that heal.',
   },
   {
     n: '03',
@@ -59,19 +60,19 @@ const WHY_CHOOSE_ITEMS = [
 const BENEFITS = [
   { title: 'Permanent, Natural Results', text: 'Transplanted hair grows naturally for life. No wigs, no maintenance treatments.' },
   { title: 'Minimally Invasive', text: 'No scalpel, no stitches, no linear scar. The automated system works with gentle precision.' },
-  { title: 'Pneumatic Precision', text: 'NeoGraft® analyzes thousands of follicles per second to select only the healthiest for transplant.' },
+  { title: 'Pneumatic Precision', text: 'NeoGraft analyzes thousands of follicles per second to select only the healthiest for transplant.' },
   { title: 'Fast Recovery', text: 'Most patients return to work in 3-5 days. Resume normal activity almost immediately.' },
   { title: 'No Visible Scarring', text: 'Individual follicle extraction leaves only tiny dots that heal quickly and discreetly.' },
   { title: 'Customized Hairline Design', text: 'Every hairline is artistically designed by Dr. Patel to match your natural growth pattern.' },
 ]
 
 const FAQ_ITEMS = [
-  { q: 'How long does the NeoGraft® procedure take?', a: 'Most NeoGraft® procedures take between 4–8 hours depending on the number of grafts needed. The procedure is completed in a single in-office session under local anesthesia. You\'re awake and comfortable throughout.' },
+  { q: 'How long does the NeoGraft procedure take?', a: 'Most NeoGraft procedures take between 4–8 hours depending on the number of grafts needed. The procedure is completed in a single in-office session under local anesthesia. You\'re awake and comfortable throughout.' },
   { q: 'When will I see results?', a: 'Transplanted hair begins growing at 3–4 months and continues improving through month 18. Most patients see significant density by month 9. Full final results are typically visible at 12–18 months.' },
-  { q: 'Is the NeoGraft® procedure painful?', a: 'During the procedure, local anesthesia ensures your complete comfort -- you won\'t feel a thing. Afterward, most patients experience only mild soreness for 1–2 days. Over-the-counter pain relievers are usually all that\'s needed.' },
-  { q: 'Will my transplanted hair look natural?', a: 'Yes. NeoGraft®\'s automated precision allows Dr. Rajesh Patel to place each follicle at the exact angle, depth, and direction that matches your natural growth pattern. The result is a hairline that is completely undetectable - because it is your own hair.' },
-  { q: 'How much does a NeoGraft® hair transplant cost?', a: 'Most patients invest between $4,000 and $15,000+, depending on the extent of hair loss and the number of grafts required. During your free consultation, you\'ll receive a personalized quote with completely transparent pricing - no hidden fees, no surprises. Flexible financing options with low monthly payments are available.' },
-  { q: 'Am I a good candidate for NeoGraft® Automated FUE?', a: 'Most men and women experiencing hair thinning or loss are good candidates. The best way to know for certain is a free consultation with Dr. Rajesh Patel at Sage Hair Clinic in Moorestown and Metuchen, NJ, who will assess your scalp, donor area, and goals to create a personalized plan.' },
+  { q: 'Is the NeoGraft procedure painful?', a: 'During the procedure, local anesthesia ensures your complete comfort -- you won\'t feel a thing. Afterward, most patients experience only mild soreness for 1–2 days. Over-the-counter pain relievers are usually all that\'s needed.' },
+  { q: 'Will my transplanted hair look natural?', a: 'Yes. NeoGraft\'s automated precision allows Dr. Rajesh Patel to place each follicle at the exact angle, depth, and direction that matches your natural growth pattern. The result is a hairline that is completely undetectable - because it is your own hair.' },
+  { q: 'How much does a NeoGraft hair transplant cost?', a: 'Most patients invest between $4,000 and $15,000+, depending on the extent of hair loss and the number of grafts required. During your free consultation, you\'ll receive a personalized quote with completely transparent pricing - no hidden fees, no surprises. Flexible financing options with low monthly payments are available.' },
+  { q: 'Am I a good candidate for NeoGraft Automated FUE?', a: 'Most men and women experiencing hair thinning or loss are good candidates. The best way to know for certain is a free consultation with Dr. Rajesh Patel at Sage Hair Clinic in Moorestown and Metuchen, NJ, who will assess your scalp, donor area, and goals to create a personalized plan.' },
   { q: 'What is the recovery time?', a: 'Most patients return to work within 3–5 days and resume all normal activities within a week. There is no scalpel incision and no stitches to remove. Follow all post-procedure guidance from Dr. Rajesh Patel for best results.' },
 ]
 
@@ -99,6 +100,11 @@ export default function NeografMetaLP({
   return (
     <div style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: INK }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
+      {/* Moorestown page (856 area code, matches the sage pool's office). Was
+          wired to no pool at all before this fix — every visitor saw the
+          static line regardless of paid session, so no /m/neograft call
+          could ever be gclid-matched. */}
+      <DniSwap client="sage" defaultDigits="8562427800" />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="shc-proc-hero" id="form" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -173,7 +179,7 @@ export default function NeografMetaLP({
             Real Patients. Real Results.
           </h2>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, color: '#4a5565', textAlign: 'center', maxWidth: 700, margin: '0 auto 48px' }}>
-            Every hairline is custom-designed by Dr. Patel and his team using the NeoGraft® Automated FUE System.
+            Every hairline is custom-designed by Dr. Patel and his team using the NeoGraft Automated FUE System.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, maxWidth: 900, margin: '0 auto 32px' }}>
@@ -231,7 +237,7 @@ export default function NeografMetaLP({
               <img src="/neograft-device.png" alt="NeoGraft Automated FUE System" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }} />
             </div>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 12, color: '#5a6259', letterSpacing: 1, textTransform: 'uppercase' as const, textAlign: 'center', marginTop: 16 }}>
-              NeoGraft® Hair Restoration System
+              NeoGraft Hair Restoration System
             </p>
           </div>
           <div>
@@ -242,10 +248,10 @@ export default function NeografMetaLP({
               Your Solution to a Permanent Hair Transplant
             </h2>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, lineHeight: 1.7, color: INK, marginBottom: 24, borderLeft: `3px solid ${GOLD}`, paddingLeft: 20 }}>
-              The NeoGraft® Automated FUE System represents the most advanced no-scalpel, no-stitch hair restoration technology available today. Using pneumatic harvesting technology, it extracts the healthiest hair follicles with unmatched precision - minimizing trauma, eliminating linear scarring, and maximizing natural-looking results.
+              The NeoGraft Automated FUE System represents the most advanced no-scalpel, no-stitch hair restoration technology available today. Using pneumatic harvesting technology, it extracts the healthiest hair follicles with unmatched precision - minimizing trauma, eliminating linear scarring, and maximizing natural-looking results.
             </p>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, lineHeight: 1.7, color: INK, borderLeft: `3px solid ${GOLD}`, paddingLeft: 20 }}>
-              Unlike traditional strip methods that leave linear scars, NeoGraft® harvests individual follicles one at a time using gentle automated suction. This means faster recovery, no visible scarring, and a hairline that looks and feels completely natural. You&apos;ll be back to your routine in days, not weeks.
+              Unlike traditional strip methods that leave linear scars, NeoGraft harvests individual follicles one at a time using gentle automated suction. This means faster recovery, no visible scarring, and a hairline that looks and feels completely natural. You&apos;ll be back to your routine in days, not weeks.
             </p>
           </div>
         </div>
@@ -313,10 +319,10 @@ export default function NeografMetaLP({
         <div className="shc-proc-split-grid" style={{ maxWidth: 1300, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
           <div>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 14, color: GOLD, textTransform: 'uppercase' as const, letterSpacing: 1.5, marginBottom: 16 }}>
-              The NeoGraft® Advantage
+              The NeoGraft Advantage
             </p>
             <h2 className="shc-h2-xl" style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, fontSize: 38, color: WHITE, marginBottom: 32 }}>
-              Why Choose NeoGraft® Automated FUE?
+              Why Choose NeoGraft Automated FUE?
             </h2>
             <div className="shc-proc-benefits-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px 32px', marginBottom: 32 }}>
               {BENEFITS.map((b) => (
@@ -391,7 +397,7 @@ export default function NeografMetaLP({
           </div>
           <div>
             <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, fontSize: 32, color: INK, marginBottom: 20 }}>
-              Find Out If NeoGraft® Is Right For Your Hair Loss Pattern
+              Find Out If NeoGraft Is Right For Your Hair Loss Pattern
             </h2>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: '#4a5565', marginBottom: 24, lineHeight: 1.5 }}>
               Start with a physician consultation to understand your hair loss and potential treatment options.
@@ -410,7 +416,7 @@ export default function NeografMetaLP({
             <div>
               <p style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, fontSize: 22, color: WHITE, marginBottom: 12 }}>Sage Hair Clinic</p>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
-                Advanced automated hair restoration using the NeoGraft® system. Permanent, natural results with minimal downtime.
+                Advanced automated hair restoration using the NeoGraft system. Permanent, natural results with minimal downtime.
               </p>
             </div>
             <div>

@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import GhlForm from './GhlForm'
 import GclidCapture from './GclidCapture'
+import DniSwap from './DniSwap'
 import TestimonialCarousel from './TestimonialCarousel'
 
 // ── DESIGN TOKENS ──
@@ -44,12 +45,12 @@ const WHY_CHOOSE_ITEMS = [
   {
     n: '01',
     title: 'AI-Guided Precision',
-    text: "The ARTAS® system uses advanced algorithms to map your scalp, identify optimal donor follicles, and execute with surgical precision that human hands cannot match.",
+    text: "The ARTAS system uses advanced algorithms to map your scalp, identify optimal donor follicles, and execute with surgical precision that human hands cannot match.",
   },
   {
     n: '02',
     title: 'No Linear Scarring',
-    text: 'Traditional strip methods leave a visible scar across the back of your head. ARTAS® extracts individual follicles, leaving no linear scar - just tiny dots that heal.',
+    text: 'Traditional strip methods leave a visible scar across the back of your head. ARTAS extracts individual follicles, leaving no linear scar - just tiny dots that heal.',
   },
   {
     n: '03',
@@ -61,7 +62,7 @@ const WHY_CHOOSE_ITEMS = [
 const BENEFITS = [
   { title: 'Permanent, Natural Results', text: 'Transplanted hair grows naturally for life. No wigs, no maintenance treatments.' },
   { title: 'Minimally Invasive', text: 'No scalpel, no stitches, no linear scar. The robotic system works with pinpoint precision.' },
-  { title: 'AI-Powered Precision', text: 'ARTAS® analyzes thousands of follicles per second to select only the healthiest for transplant.' },
+  { title: 'AI-Powered Precision', text: 'ARTAS analyzes thousands of follicles per second to select only the healthiest for transplant.' },
   { title: 'Fast Recovery', text: 'Most patients return to work in 3-5 days. Resume normal activity almost immediately.' },
   { title: 'No Visible Scarring', text: 'Individual follicle extraction leaves only tiny dots that heal quickly and discreetly.' },
   { title: 'Customized Hairline Design', text: 'Every hairline is artistically designed by Dr. Patel to match your natural growth pattern.' },
@@ -71,7 +72,7 @@ const FAQ_ITEMS = [
   { q: 'Are hair transplant procedures painful?', a: 'During the hair transplant procedure, local anesthesia ensures your complete comfort -- you won\'t feel a thing. Afterwards, most patients experience only minimal discomfort. Over-the-counter pain relievers are usually sufficient if there\'s any discomfort at all.' },
   { q: 'How long is recovery?', a: 'Recovery time varies, but most patients resume light activities within a day or two and return to normal activities within a week. For best results, follow all post-procedure instructions, follow-up visits, and recommendations from Dr. Rajesh Patel.' },
   { q: 'Are the results permanent?', a: 'Yes -- because your own natural hair follicles are being transplanted, the results are generally permanent, assuming you follow the post-procedure instructions. Hair will begin to grow in the transplant area within 3-6 months, with full results visible by 12-18 months.' },
-  { q: 'Am I a good candidate for ARTAS® Robotic FUE?', a: 'Most men and women experiencing hair thinning or hair loss are candidates for ARTAS®. The best way to find out is through a free consultation with Dr. Rajesh Patel at Sage Hair Clinic in Moorestown and Metuchen, NJ, who will assess your scalp, donor area, and goals to create a personalized plan.' },
+  { q: 'Am I a good candidate for ARTAS Robotic FUE?', a: 'Most men and women experiencing hair thinning or hair loss are candidates for ARTAS. The best way to find out is through a free consultation with Dr. Rajesh Patel at Sage Hair Clinic in Moorestown and Metuchen, NJ, who will assess your scalp, donor area, and goals to create a personalized plan.' },
   { q: 'How much does a hair transplant cost?', a: 'Most patients invest between $4,000 and $15,000+, depending on the extent of hair loss and the numbers of grafts required. During your free consultation, you\'ll receive a personalized quote with completely transparent pricing: no hidden fees, no surprises. We also offer flexible financing options with low monthly payments, so cost never has to stand between you and your confidence.' },
 ]
 
@@ -79,10 +80,10 @@ const FAQ_ITEMS = [
 // the exact node IDs in the design file (not bulk-scraped) so before/after
 // photos are never crossed between different patients.
 const BEFORE_AFTER = [
-  { name: 'keith', label: 'Patient - ARTAS® Robotic FUE' },
-  { name: 'edy', label: 'Patient - ARTAS® Robotic FUE' },
-  { name: 'ma', label: 'Patient - ARTAS® Robotic FUE' },
-  { name: 'st', label: 'Patient - ARTAS® Robotic FUE' },
+  { name: 'keith', label: 'Patient - ARTAS Robotic FUE' },
+  { name: 'edy', label: 'Patient - ARTAS Robotic FUE' },
+  { name: 'ma', label: 'Patient - ARTAS Robotic FUE' },
+  { name: 'st', label: 'Patient - ARTAS Robotic FUE' },
 ]
 
 interface Props {
@@ -98,6 +99,11 @@ export default function ArtasMetaLP({
   return (
     <div style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: INK }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
+      {/* Metuchen page (732 area code, matches the sage-metuchen pool's office).
+          Was wired to no pool at all before this fix — every visitor saw the
+          static line regardless of paid session, so no /m/artas call could
+          ever be gclid-matched. */}
+      <DniSwap client="sage-metuchen" defaultDigits="7326318461" />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="shc-proc-hero" id="form" style={{ position: 'relative', overflow: 'hidden' }}>
@@ -172,7 +178,7 @@ export default function ArtasMetaLP({
             Real Patients. Real Results.
           </h2>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, color: '#4a5565', textAlign: 'center', maxWidth: 700, margin: '0 auto 48px' }}>
-            Every patient has a unique hair loss pattern. Our ARTAS® robotic technology creates a custom hairline that looks completely natural - because it is.
+            Every patient has a unique hair loss pattern. Our ARTAS robotic technology creates a custom hairline that looks completely natural - because it is.
           </p>
 
           {/* Featured pair */}
@@ -226,7 +232,7 @@ export default function ArtasMetaLP({
               <img src="/artas-device.png" alt="ARTAS Robotic FUE System" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }} />
             </div>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 12, color: '#5a6259', letterSpacing: 1, textTransform: 'uppercase' as const, textAlign: 'center', marginTop: 16 }}>
-              ARTAS® Robotic FUE System
+              ARTAS Robotic FUE System
             </p>
           </div>
           <div>
@@ -237,10 +243,10 @@ export default function ArtasMetaLP({
               Your Solution to a Permanent Hair Transplant
             </h2>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, lineHeight: 1.7, color: INK, marginBottom: 24, borderLeft: `3px solid ${GOLD}`, paddingLeft: 20 }}>
-              The ARTAS® Robotic FUE System represents the most advanced hair restoration technology available today. Using AI-powered precision, it identifies and harvests the healthiest hair follicles with unmatched accuracy - minimizing scarring and maximizing natural-looking results.
+              The ARTAS Robotic FUE System represents the most advanced hair restoration technology available today. Using AI-powered precision, it identifies and harvests the healthiest hair follicles with unmatched accuracy - minimizing scarring and maximizing natural-looking results.
             </p>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, lineHeight: 1.7, color: INK, borderLeft: `3px solid ${GOLD}`, paddingLeft: 20 }}>
-              Unlike traditional strip methods that leave linear scars, ARTAS® uses robotic assistance to extract individual follicles. This means faster recovery, no visible scarring, and a hairline that looks and feels completely natural. You&apos;ll be back to your routine in days, not weeks.
+              Unlike traditional strip methods that leave linear scars, ARTAS uses robotic assistance to extract individual follicles. This means faster recovery, no visible scarring, and a hairline that looks and feels completely natural. You&apos;ll be back to your routine in days, not weeks.
             </p>
           </div>
         </div>
@@ -308,10 +314,10 @@ export default function ArtasMetaLP({
         <div className="shc-proc-split-grid" style={{ maxWidth: 1300, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
           <div>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 14, color: GOLD, textTransform: 'uppercase' as const, letterSpacing: 1.5, marginBottom: 16 }}>
-              The ARTAS® Advantage
+              The ARTAS Advantage
             </p>
             <h2 className="shc-h2-xl" style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, fontSize: 38, color: WHITE, marginBottom: 32 }}>
-              Why Choose ARTAS® Robotic FUE?
+              Why Choose ARTAS Robotic FUE?
             </h2>
             <div className="shc-proc-benefits-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '28px 32px', marginBottom: 32 }}>
               {BENEFITS.map((b) => (
@@ -386,7 +392,7 @@ export default function ArtasMetaLP({
           </div>
           <div>
             <h2 style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, fontSize: 32, color: INK, marginBottom: 20 }}>
-              Find Out If ARTAS® Is Right For Your Hair Loss Pattern
+              Find Out If ARTAS Is Right For Your Hair Loss Pattern
             </h2>
             <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: '#4a5565', marginBottom: 24, lineHeight: 1.5 }}>
               Start with a physician consultation to understand your hair loss and potential treatment options.
@@ -405,7 +411,7 @@ export default function ArtasMetaLP({
             <div>
               <p style={{ fontFamily: "'DM Serif Display', Georgia, serif", fontWeight: 400, fontSize: 22, color: WHITE, marginBottom: 12 }}>Sage Hair Clinic</p>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>
-                Advanced robotic hair restoration using the ARTAS® system. Permanent, natural results with minimal downtime.
+                Advanced robotic hair restoration using the ARTAS system. Permanent, natural results with minimal downtime.
               </p>
             </div>
             <div>

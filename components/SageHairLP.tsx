@@ -412,6 +412,13 @@ export default function SageHairLP({
                 across the fleet's pages and it stayed open for 18 days.
                 scroll-margin-top keeps the card clear of the sticky header. */}
             <div className="shc-hero-right" id="form" style={{ scrollMarginTop: 96 }}>
+              {/* No maxHeight/overflow:hidden and no CSS scale() here on purpose:
+                  form_embed.js resizes the iframe to the widget's real rendered
+                  height (which varies with consent-text wrapping), and a fixed
+                  clip boundary doesn't track that resize — it clipped the submit
+                  button once the real form grew past the budget the old
+                  scale(0.8) hack assumed. Let the card grow to fit its content,
+                  same as the footer form below, which was never clipped. */}
               <div style={{
                 background: 'rgba(255,255,255,0.12)',
                 backdropFilter: 'blur(16px)',
@@ -419,13 +426,9 @@ export default function SageHairLP({
                 borderRadius: 16,
                 padding: '28px 28px 24px',
                 width: '100%',
-                maxHeight: 645,
-                overflow: 'hidden',
                 boxShadow: '10px 10px 10.1px rgba(0,0,0,0.54)',
               }}>
-                <div style={{ width: '125%', transform: 'scale(0.8)', transformOrigin: 'top left' }}>
-                  <GhlForm formId={heroFormId} height={729} formName="Request Your Evaluation - Sage Hair Clinic" />
-                </div>
+                <GhlForm formId={heroFormId} height={729} formName="Request Your Evaluation - Sage Hair Clinic" />
               </div>
             </div>
           </div>
