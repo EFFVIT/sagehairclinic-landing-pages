@@ -20,8 +20,9 @@ export default function HairRestorationPage() {
         phoneHref="+17322051790"
         phoneDisplay="(732) 205-1790"
         hideMoorestown
-        dniClient="sage-metuchen"
       />
+      <Script src="https://backend.leadconnectorhq.com/appengine/loc/8XaXhOsG3DTrVhyaRPbr/pool/m3GDlLyrRCRUVKtfJYuX/number_pool.js" strategy="afterInteractive" />
+      <Script src="https://backend.leadconnectorhq.com/appengine/js/user_session.js" strategy="afterInteractive" />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
