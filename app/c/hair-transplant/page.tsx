@@ -12,17 +12,22 @@ export const metadata: Metadata = {
 export default function HairTransplantPage() {
   return (
     <>
-      {/* Real Metuchen-hosted forms (2026-08-18) — no gclid/UTM hidden fields
-          yet, Metuchen leads unattributable until Mike adds them. */}
+      {/* Real Metuchen-hosted forms; the 9 gclid/UTM hidden fields were added
+          and browser-verified 2026-08-18 (ClickUp 86bbgbdtv). */}
+      {/* EFFVIT DNI only (dni_pools 'sage-metuchen', LIVE since 2026-08-18).
+          Never add GHL's number_pool.js / user_session.js here: the two
+          swappers race on the same text nodes, and the same six 848 CTNs are
+          registered in both ledgers, so each system corrupts the other's
+          call→click mapping. ClickUp 86bb9qbn0: EFFVIT pool only — it is the
+          one that feeds control.effvit.com and the gclid-keyed OCI upload. */}
       <SageHairLP
         heroFormId="o2iad3Vpe364PZ9hreA8"
         bottomFormId="PzLR3XAN4fIL42nBWf0W"
         phoneHref="+17322051790"
         phoneDisplay="(732) 205-1790"
         hideMoorestown
+        dniClient="sage-metuchen"
       />
-      <Script src="https://backend.leadconnectorhq.com/appengine/loc/8XaXhOsG3DTrVhyaRPbr/pool/m3GDlLyrRCRUVKtfJYuX/number_pool.js" strategy="afterInteractive" />
-      <Script src="https://backend.leadconnectorhq.com/appengine/js/user_session.js" strategy="afterInteractive" />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"

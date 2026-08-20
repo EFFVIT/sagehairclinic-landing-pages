@@ -245,11 +245,15 @@ interface Props {
   hideMetuchen?: boolean
   hideMoorestown?: boolean
   /**
-   * EFFVIT DNI pool key (`dni_pools.client_id`). Moorestown pages use `sage`.
-   * Metuchen pages use `sage-metuchen`, which is NOT provisioned yet — the
-   * lease call returns no number and the static line stays, which is the
-   * intended fallback. Provisioning it needs a `clients` row first, because
-   * `dni_pools.client_id` is a FK to it.
+   * EFFVIT DNI pool key (`dni_pools.client_id`). Moorestown pages pass `sage`;
+   * Metuchen pages pass `sage-metuchen`. BOTH pools are provisioned and LIVE
+   * (mode:"live", 6 CTNs each) as of 2026-08-18 — an earlier version of this
+   * comment said sage-metuchen was unprovisioned, and acting on it caused the
+   * wrong-pool regression PR #3 shipped that same day.
+   *
+   * There is deliberately NO default: omitting the prop disables DNI entirely
+   * (the static line stays). A default of 'sage' here is what silently pointed
+   * every Metuchen page at the Moorestown pool when PR #3 removed the prop.
    */
   dniClient?: string
 }
@@ -263,7 +267,7 @@ export default function SageHairLP({
   phoneDisplay = '(848) 200-1644',
   hideMetuchen = false,
   hideMoorestown = false,
-  dniClient = 'sage',
+  dniClient,
 }: Props) {
   const [areaCode, ...localParts] = phoneDisplay.split(' ')
   const localNumber = localParts.join(' ')
