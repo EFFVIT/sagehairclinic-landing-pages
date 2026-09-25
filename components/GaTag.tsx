@@ -33,7 +33,17 @@ const GA_ID = 'G-PY114415WL'
 
    Suppressing a tag on a medical page can only reduce exposure, so this cannot
    hide a violation. Widening it back belongs to Joe (H-43). */
-const HEALTH_INTENT_ROUTES = ['/c']
+/* /m added 2026-09-25. The /m Meta landing pages (/m/artas, /m/neograft) each
+   mount a RootLogic consult form on a hair-transplant page, which is the same
+   health-intent-input-in-a-form shape the /c gate was created for, and both
+   were measured firing GA4 live that day:
+     googletagmanager.com/gtag/js?id=G-PY114415WL
+     google-analytics.com/g/collect?...tid=G-PY114415WL
+   The original gate listed only /c because /m did not exist when it was
+   written — which is the failure the comment above predicted in the abstract
+   and then suffered in the concrete. Adding a route family to an app that
+   gates by route means re-reading the gate (H-45). */
+const HEALTH_INTENT_ROUTES = ['/c', '/m']
 const isHealthIntent = (p: string) =>
   HEALTH_INTENT_ROUTES.some((r) => p === r || p.startsWith(r + '/'))
 
