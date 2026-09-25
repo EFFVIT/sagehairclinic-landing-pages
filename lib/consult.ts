@@ -227,9 +227,50 @@ export async function writeCustomFields(contactId: string, lead: Lead, office?: 
       ? (nested as Record<string, string>)
       : (CONSULT_FIELD_MAP as unknown as Record<string, string>)
 
-  const entries = Object.entries(map)
+  const wanted = Object.entries(map)
     .filter(([payloadKey]) => lead[payloadKey] !== undefined && lead[payloadKey] !== '')
-    .map(([payloadKey, fieldKey]) => ({ key: fieldKey, field_value: String(lead[payloadKey]) }))
+    .map(([payloadKey, fieldKey]) => ({ fieldKey, value: String(lead[payloadKey]) }))
+
+  /* RESOLVE fieldKey -> field ID BEFORE WRITING. Paid for on 2026-09-25 with a
+     live booking that produced a contact, an appointment, and zero attribution.
+
+     PUT /contacts/{id} with {key: "contact.gclidof", field_value} returns
+     200 OK and DISCARDS THE VALUE. The same PUT with {id: "<fieldId>",
+     field_value} persists it. Both were run against the same contact, the
+     same token and the same field, one after the other — the only difference
+     is the addressing. This is H-41 exactly, and the comment in every
+     consult.config.ts already warned that "a PUT with an unresolvable
+     fieldKey returns 200 and silently discards the value, which reads as
+     working". The code was doing the thing the comment warned about.
+
+     The map stays keyed on fieldKey, because fieldKey is the stable identifier
+     across sub-accounts; field IDs are per sub-account and must never be
+     hardcoded into a config. So we translate at request time. */
+  const entries: Array<{ id: string; field_value: string }> = []
+  const unresolved: string[] = []
+  if (wanted.length) {
+    let catalog: Array<{ id?: string; fieldKey?: string }> = []
+    try {
+      const res = (await ghl(o.locationId, `/locations/${o.locationId}/customFields`)) as unknown as {
+        customFields?: Array<{ id?: string; fieldKey?: string }>
+      }
+      catalog = res?.customFields || []
+    } catch (err) {
+      /* A failed read is not an empty catalog (H-39). Say which happened. */
+      const e = err as Error & { status?: number }
+      return {
+        written: 0,
+        office: o.key,
+        reason: `could not read this sub-account's custom fields (HTTP ${e?.status ?? '?'}); the PIT likely lacks locations/customFields.readonly, so nothing was written rather than written blind`,
+      }
+    }
+    const byKey = new Map(catalog.filter((f) => f.fieldKey && f.id).map((f) => [f.fieldKey as string, f.id as string]))
+    for (const w of wanted) {
+      const id = byKey.get(w.fieldKey)
+      if (id) entries.push({ id, field_value: w.value })
+      else unresolved.push(w.fieldKey)
+    }
+  }
 
   if (!entries.length) {
     /* Says which, rather than reporting silence as success. An empty map is a
@@ -246,7 +287,11 @@ export async function writeCustomFields(contactId: string, lead: Lead, office?: 
     method: 'PUT',
     body: JSON.stringify({ customFields: entries }),
   })
-  return { written: entries.length, office: o.key }
+  /* Report the misses by name. A key present in the map but absent from the
+     sub-account is a config drift worth seeing, not a silent partial write. */
+  return unresolved.length
+    ? { written: entries.length, office: o.key, unresolved }
+    : { written: entries.length, office: o.key }
 }
 
 /* ---------------------------------------------------------- appointment --- */
