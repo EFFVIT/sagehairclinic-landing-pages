@@ -3,7 +3,7 @@ import { Suspense, useState } from 'react'
 import GhlForm from './GhlForm'
 import GclidCapture from './GclidCapture'
 import DniSwap from './DniSwap'
-import HeroSlots from './HeroSlots'
+import HeroScheduler from './HeroScheduler'
 
 // ── DESIGN TOKENS ──────────────────────────────────────────────────────────
 const GREEN   = '#507a60'
@@ -414,16 +414,6 @@ export default function SageHairLP({
                   <span style={{ fontWeight: 400, fontSize: 'clamp(12px, 1vw, 13px)' }}>Patients appreciate our personalized, doctor-led approach.</span>
                 </p>
               </div>
-              {office && (
-                <div className="shc-hero-slots" style={{ marginTop: 26 }}>
-                  <HeroSlots
-                    office={office}
-                    label={office === 'metuchen' ? 'Metuchen' : 'Moorestown'}
-                    phoneHref={`tel:${phoneHref}`}
-                    phoneDisplay={phoneDisplay}
-                  />
-                </div>
-              )}
             </div>
 
             {/* Right — glass form card */}
@@ -435,7 +425,7 @@ export default function SageHairLP({
                 primary CTA appeared to do nothing. lp-qa reported it 73 times
                 across the fleet's pages and it stayed open for 18 days.
                 scroll-margin-top keeps the card clear of the sticky header. */}
-            <div className="shc-hero-right" id="form" style={{ scrollMarginTop: 96 }}>
+            <div className="shc-hero-right" style={{ scrollMarginTop: 96 }}>
               {/* No maxHeight/overflow:hidden and no CSS scale() here on purpose:
                   form_embed.js resizes the iframe to the widget's real rendered
                   height (which varies with consent-text wrapping), and a fixed
@@ -443,17 +433,26 @@ export default function SageHairLP({
                   button once the real form grew past the budget the old
                   scale(0.8) hack assumed. Let the card grow to fit its content,
                   same as the footer form below, which was never clipped. */}
-              <div style={{
-                background: 'rgba(255,255,255,0.12)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                borderRadius: 16,
-                padding: '28px 28px 24px',
-                width: '100%',
-                boxShadow: '10px 10px 10.1px rgba(0,0,0,0.54)',
-              }}>
-                <GhlForm formId={heroFormId} height={729} formName="Request Your Evaluation - Sage Hair Clinic" />
-              </div>
+              {office ? (
+                <HeroScheduler
+                  office={office}
+                  label={office === 'metuchen' ? 'Metuchen' : 'Moorestown'}
+                  phoneHref={`tel:${phoneHref}`}
+                  phoneDisplay={phoneDisplay}
+                />
+              ) : (
+                <div style={{
+                  background: 'rgba(255,255,255,0.12)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  borderRadius: 16,
+                  padding: '28px 28px 24px',
+                  width: '100%',
+                  boxShadow: '10px 10px 10.1px rgba(0,0,0,0.54)',
+                }}>
+                  <GhlForm formId={heroFormId} height={729} formName="Request Your Evaluation - Sage Hair Clinic" />
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -649,7 +648,7 @@ export default function SageHairLP({
 
           <div className="shc-btn-row" style={{ display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' as const }}>
             <a
-              href="#form"
+              href={office ? `/c/consult?office=${office}` : '#form'}
               style={{
                 background: GOLD,
                 color: '#000',
@@ -663,7 +662,7 @@ export default function SageHairLP({
                 whiteSpace: 'nowrap' as const,
               }}
             >
-              Request Your Consultation
+              {office ? 'Schedule Your Consultation' : 'Request Your Consultation'}
             </a>
             <a
               href="#form"
@@ -1078,7 +1077,7 @@ export default function SageHairLP({
             ))}
 
             {/* Form — RIGHT */}
-            <div className="shc-form-col">
+            <div className="shc-form-col" id="form" style={{ scrollMarginTop: 96 }}>
               <GhlForm formId={bottomFormId} height={742} formName="Footer Form - Sage Hair Clinic" />
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",

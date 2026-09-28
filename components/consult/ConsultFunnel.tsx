@@ -99,6 +99,36 @@ export default function ConsultFunnel() {
     attribution.current = saved
   }, [])
 
+  /* ---- seed office / format / requested time from the URL ----------------
+     A landing page can hand this funnel a specific office, format and slot
+     (the hero scheduler does). Seeding is STRICTLY validated and never
+     advances past a question the patient still has to answer:
+
+     - an office that is not a real key of this client is dropped, never
+       coerced to the first one — booking somebody into the wrong practice
+       looks entirely correct on every screen afterwards;
+     - a format that is not one of the two is dropped;
+     - a requested time is held, NOT applied, until the calendar comes back
+       and confirms that exact slot is still free. A slot that has gone since
+       the landing page rendered simply is not selected, so the patient picks
+       again rather than being booked into something that no longer exists.
+
+     Only the office step is skipped, because the URL genuinely answered it.
+     Contact, pattern and about are medical intake and are always asked. */
+  const requestedAt = useRef('')
+  useEffect(() => {
+    const url = new URLSearchParams(window.location.search)
+    const seed: Values = {}
+    const o = url.get('office')
+    if (MULTI && o && OFFICES.some((x) => x.key === o)) seed.office = o
+    const f = url.get('format')
+    if (f === 'in-person' || f === 'virtual') seed.format = f
+    const at = url.get('at')
+    if (at && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(at)) requestedAt.current = at
+    if (Object.keys(seed).length) setV((p) => ({ ...p, ...seed }))
+    if (seed.office && STEPS[0].id === 'office') setStep(1)
+  }, [])
+
   useEffect(() => {
     if (cooldown <= 0) return
     const t = setTimeout(() => setCooldown((c) => c - 1), 1000)
@@ -171,6 +201,15 @@ export default function ConsultFunnel() {
       setSlotsError(`We could not load times just now. Call ${callNumber} and we will book it for you.`)
     }
   }, [callNumber])
+
+  /* One shot. A held time is applied at most once and then forgotten, so a
+     later format change cannot silently re-apply a slot from the old one. */
+  useEffect(() => {
+    if (!slots || !requestedAt.current) return
+    const match = slots.find((s) => s.iso === requestedAt.current)
+    requestedAt.current = ''
+    if (match) { set('slot', match.iso); set('slot_label', `${match.day}, ${match.time}`) }
+  }, [slots])
 
   const advance = async () => {
     if (STEPS[step].id === 'contact' && !validateContact()) return
