@@ -19,6 +19,7 @@ export default function HairTransplantMoorestownPage() {
         phoneDisplay="(856) 360-7159"
         hideMetuchen
         dniClient="sage"
+        office="moorestown"
       />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"

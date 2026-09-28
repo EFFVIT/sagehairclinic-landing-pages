@@ -12,8 +12,26 @@ button { font-family: inherit; }
   /* Hero */
   .shc-hero-topbar   { padding: 20px 20px 0 !important; }
   .shc-hero-nav-btns { gap: 8px !important; }
-  .shc-hero-content  { padding: clamp(32px, 8vh, 64px) 20px !important; }
+  /* Was clamp(32px, 8vh, 64px). Tightened so the scheduling card clears the
+     fixed Start Here launcher at 390x844 with the whole card above the fold.
+     Side effect, deliberate: the headline sits ~40px higher on a phone. */
+  .shc-hero-content  { padding: 26px 20px !important; }
   .shc-hero-grid      { grid-template-columns: 1fr !important; gap: 28px !important; }
+
+  /* Hero scheduling card (comp A). The hero-left carries an inline 160px top
+     margin that is right on desktop and puts the slot card below the fold on a
+     390px screen, which defeats the point of showing times at all. The bottom
+     margin clears the site-wide Start Here launcher, which is fixed bottom
+     right and otherwise sits on top of the first row of times. */
+  .shc-hero-left  { margin-top: 8px !important; }
+  .shc-hero-slots { margin-top: 20px !important; margin-bottom: 76px !important; }
+
+  /* Four times on a phone, not six. The site-wide Start Here launcher is fixed
+     to the bottom right and sat on top of the sixth chip, covering a tappable
+     time. Two rows of two keeps the whole card clear of it and makes each
+     target bigger; "See all times" carries the rest. */
+  .shc-slot-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .shc-slot-grid a:nth-child(n+5) { display: none !important; }
 
   /* Section padding */
   .shc-pad { padding-left: 20px !important; padding-right: 20px !important; }

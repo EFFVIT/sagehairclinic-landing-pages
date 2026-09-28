@@ -3,6 +3,7 @@ import { Suspense, useState } from 'react'
 import GhlForm from './GhlForm'
 import GclidCapture from './GclidCapture'
 import DniSwap from './DniSwap'
+import HeroSlots from './HeroSlots'
 
 // ── DESIGN TOKENS ──────────────────────────────────────────────────────────
 const GREEN   = '#507a60'
@@ -256,6 +257,14 @@ interface Props {
    * every Metuchen page at the Moorestown pool when PR #3 removed the prop.
    */
   dniClient?: string
+  /**
+   * Which GoHighLevel sub-account this page belongs to. Drives the hero
+   * scheduling card. There is deliberately NO default: Sage runs two separate
+   * sub-accounts and guessing one would offer a Metuchen visitor Moorestown's
+   * calendar, book them into the wrong practice and look entirely correct
+   * doing it. Omitting the prop renders no scheduling card at all.
+   */
+  office?: 'metuchen' | 'moorestown'
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
@@ -268,6 +277,7 @@ export default function SageHairLP({
   hideMetuchen = false,
   hideMoorestown = false,
   dniClient,
+  office,
 }: Props) {
   const [areaCode, ...localParts] = phoneDisplay.split(' ')
   const localNumber = localParts.join(' ')
@@ -332,7 +342,7 @@ export default function SageHairLP({
               {phoneDisplay}
             </a>
             <a
-              href="#form"
+              href={office ? `/c/consult?office=${office}` : '#form'}
               style={{
                 background: GOLD,
                 color: '#000',
@@ -346,7 +356,7 @@ export default function SageHairLP({
                 whiteSpace: 'nowrap' as const,
               }}
             >
-              Book Your Consultation
+              {office ? 'Schedule My Consultation' : 'Book Your Consultation'}
             </a>
           </div>
         </div>
@@ -404,6 +414,16 @@ export default function SageHairLP({
                   <span style={{ fontWeight: 400, fontSize: 'clamp(12px, 1vw, 13px)' }}>Patients appreciate our personalized, doctor-led approach.</span>
                 </p>
               </div>
+              {office && (
+                <div className="shc-hero-slots" style={{ marginTop: 26 }}>
+                  <HeroSlots
+                    office={office}
+                    label={office === 'metuchen' ? 'Metuchen' : 'Moorestown'}
+                    phoneHref={`tel:${phoneHref}`}
+                    phoneDisplay={phoneDisplay}
+                  />
+                </div>
+              )}
             </div>
 
             {/* Right — glass form card */}
