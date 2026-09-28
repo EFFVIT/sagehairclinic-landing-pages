@@ -149,17 +149,17 @@ export default function HeroScheduler({
         </p>
       ) : (
         <>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10, minWidth: 0 }}>
             <button type="button" aria-label="Earlier days" onClick={() => scrollStrip(-1)}
               style={{ flex: 'none', width: 28, height: 34, borderRadius: 7, border: `1px solid ${LINE}`, background: '#fff', color: GREEN, fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>‹</button>
-            <div ref={strip} className="shc-day-strip" style={{ display: 'flex', gap: 6, overflowX: 'auto', scrollbarWidth: 'none', flex: 1 }}>
+            <div ref={strip} className="shc-day-strip" style={{ display: 'flex', gap: 6, overflowX: 'auto', scrollbarWidth: 'none', flex: '1 1 0', minWidth: 0 }}>
               {days.map(([k, list]) => {
                 const { dow, dom } = dayParts(list[0].iso)
                 const on = k === dayKey
                 return (
                   <button key={k} type="button" aria-pressed={on} onClick={() => { setDayKey(k); setPicked(null) }}
                     style={{
-                      flex: 'none', minWidth: 68, padding: '7px 8px', borderRadius: 8, cursor: 'pointer',
+                      flex: 'none', minWidth: 58, padding: '7px 7px', borderRadius: 8, cursor: 'pointer',
                       border: `1px solid ${on ? GREEN : LINE}`, background: on ? GREEN : '#fff',
                       color: on ? '#fff' : TEXT, lineHeight: 1.15,
                     }}>
@@ -173,7 +173,7 @@ export default function HeroScheduler({
               style={{ flex: 'none', width: 28, height: 34, borderRadius: 7, border: `1px solid ${LINE}`, background: '#fff', color: GREEN, fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>›</button>
           </div>
 
-          <div className="shc-time-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, maxHeight: 150, overflowY: 'auto' }}>
+          <div className="shc-time-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(74px, 1fr))', gap: 6, maxHeight: 150, overflowY: 'auto' }}>
             {times.map((s) => {
               const on = picked?.iso === s.iso
               return (

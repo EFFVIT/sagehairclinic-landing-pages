@@ -6,6 +6,20 @@ body { background: #fff; color: #111; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; }
 
+/* ═══ Hero booking panel — width containment ═══
+   A grid or flex ITEM defaults to min-width:auto, which means it refuses to
+   shrink below its own content. The day strip is 11 chips wide (~808px of
+   scroll content), so without these the panel pinned its column at 920px at
+   EVERY viewport: the hero's 1.15fr/0.85fr computed to 184px/920px at 1000px
+   wide, crushing the headline and covering the patient's face in the hero
+   photograph. overflow-x on the strip does nothing until the item is allowed
+   to be narrower than its contents. */
+.shc-hero-right { min-width: 0; }
+.shc-hero-right > * { max-width: 100%; }
+.shc-day-strip  { min-width: 0; }
+.shc-day-strip  { scrollbar-width: none; }
+.shc-day-strip::-webkit-scrollbar { display: none; }
+
 /* ═══ SageHairLP – Responsive Overrides ═══ */
 
 @media (max-width: 768px) {
