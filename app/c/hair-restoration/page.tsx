@@ -28,6 +28,7 @@ export default function HairRestorationPage() {
         hideMoorestown
         dniClient="sage-metuchen"
         office="metuchen"
+        heroFormPrimary
       />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"

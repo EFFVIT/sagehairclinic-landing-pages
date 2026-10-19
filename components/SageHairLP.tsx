@@ -265,6 +265,16 @@ interface Props {
    * doing it. Omitting the prop renders no scheduling card at all.
    */
   office?: 'metuchen' | 'moorestown'
+  /**
+   * When true, the hero leads with the short request FORM (attribution-bearing
+   * GhlForm) and offers self-booking as a secondary "Prefer to schedule now?"
+   * reveal. Default false keeps the booking-panel-primary hero, so every other
+   * client and any page that does not opt in is unchanged. Joe approved the
+   * form-primary restore 2026-10-19; Metuchen /c pages opt in now, Moorestown
+   * /c pages opt in only once their hero form (Bz6dQVf0S97nyijuLRID) carries
+   * fbclid-of and reverifies 9/9 (it is 8/9 today, so it is held).
+   */
+  heroFormPrimary?: boolean
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
@@ -278,10 +288,12 @@ export default function SageHairLP({
   hideMoorestown = false,
   dniClient,
   office,
+  heroFormPrimary = false,
 }: Props) {
   const [areaCode, ...localParts] = phoneDisplay.split(' ')
   const localNumber = localParts.join(' ')
   const dniDigits = phoneHref.replace(/\D/g, '').replace(/^1/, '')
+  const [showScheduler, setShowScheduler] = useState(false)
   return (
     <div style={{ fontFamily: "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif", color: TEXT }}>
       <Suspense fallback={null}><GclidCapture /></Suspense>
@@ -433,7 +445,7 @@ export default function SageHairLP({
                   button once the real form grew past the budget the old
                   scale(0.8) hack assumed. Let the card grow to fit its content,
                   same as the footer form below, which was never clipped. */}
-              {office ? (
+              {office && !heroFormPrimary ? (
                 <HeroScheduler
                   office={office}
                   label={office === 'metuchen' ? 'Metuchen' : 'Moorestown'}
@@ -451,6 +463,31 @@ export default function SageHairLP({
                   boxShadow: '10px 10px 10.1px rgba(0,0,0,0.54)',
                 }}>
                   <GhlForm formId={heroFormId} height={729} formName="Request Your Evaluation - Sage Hair Clinic" />
+                  {office && heroFormPrimary && (
+                    !showScheduler ? (
+                      <button
+                        type="button"
+                        onClick={() => setShowScheduler(true)}
+                        style={{
+                          display: 'block', width: '100%', marginTop: 14,
+                          background: 'transparent', border: 'none', color: '#ffffff',
+                          fontSize: 15, fontWeight: 600, textDecoration: 'underline',
+                          cursor: 'pointer', fontFamily: 'inherit',
+                        }}
+                      >
+                        Prefer to schedule now?
+                      </button>
+                    ) : (
+                      <div style={{ marginTop: 20 }}>
+                        <HeroScheduler
+                          office={office}
+                          label={office === 'metuchen' ? 'Metuchen' : 'Moorestown'}
+                          phoneHref={`tel:${phoneHref}`}
+                          phoneDisplay={phoneDisplay}
+                        />
+                      </div>
+                    )
+                  )}
                 </div>
               )}
             </div>
