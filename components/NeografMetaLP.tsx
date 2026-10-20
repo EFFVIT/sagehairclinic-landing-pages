@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import GhlForm from './GhlForm'
+import HeroSchedulerToggle from './HeroSchedulerToggle'
 import GclidCapture from './GclidCapture'
 import DniSwap from './DniSwap'
 import TestimonialCarousel from './TestimonialCarousel'
@@ -151,7 +152,7 @@ export default function NeografMetaLP({
               </p>
             </div>
 
-            <div className="shc-proc-hero-right">
+            <div className="shc-proc-hero-right" style={{ minWidth: 0 }}>
               <div style={{
                 background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
                 borderRadius: 16, padding: '24px 24px 12px', boxShadow: '10px 10px 24px rgba(0,0,0,0.4)',
@@ -163,6 +164,12 @@ export default function NeografMetaLP({
                   Free consultation - no obligation, no pressure, no hard sell. Just honest answers from Dr. Rajesh Patel.
                 </p>
                 <GhlForm formId={heroFormId} height={480} formName="NeoGraft Hero Form" />
+                <HeroSchedulerToggle
+                  office="moorestown"
+                  label="Moorestown"
+                  phoneHref="tel:+18562427800"
+                  phoneDisplay="+1 856-242-7800"
+                />
               </div>
             </div>
           </div>

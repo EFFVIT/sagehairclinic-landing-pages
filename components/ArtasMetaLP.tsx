@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import GhlForm from './GhlForm'
+import HeroSchedulerToggle from './HeroSchedulerToggle'
 import GclidCapture from './GclidCapture'
 import DniSwap from './DniSwap'
 import TestimonialCarousel from './TestimonialCarousel'
@@ -150,7 +151,7 @@ export default function ArtasMetaLP({
               </p>
             </div>
 
-            <div className="shc-proc-hero-right">
+            <div className="shc-proc-hero-right" style={{ minWidth: 0 }}>
               <div style={{
                 background: 'rgba(255,255,255,0.14)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
                 borderRadius: 16, padding: '24px 24px 12px', boxShadow: '10px 10px 24px rgba(0,0,0,0.4)',
@@ -162,6 +163,12 @@ export default function ArtasMetaLP({
                   Free consultation - no obligation, no pressure, no hard sell. Just honest answers from Dr. Rajesh Patel.
                 </p>
                 <GhlForm formId={heroFormId} height={480} formName="ARTAS Hero Form" />
+                <HeroSchedulerToggle
+                  office="metuchen"
+                  label="Metuchen"
+                  phoneHref="tel:+18483087293"
+                  phoneDisplay="+1 848-308-7293"
+                />
               </div>
             </div>
           </div>

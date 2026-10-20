@@ -153,7 +153,12 @@ async function ghl(locationId: string, path: string, init: RequestInit = {}, ver
 /* ---------------------------------------------------------------- slots --- */
 export type Slot = { iso: string; day: string; time: string }
 
-export async function getSlots(format: ConsultFormat, office?: string | null, days = 14): Promise<Slot[]> {
+/* days: GHL's free-slots endpoint HARD-REFUSES a range over 31 days with a 400
+   ("Date range cannot be more than 31 days"), tested 2026-10-20 — so 30 is the
+   practical ceiling, not a preference. At 14 the Moorestown calendar published 11
+   bookable days; at 30 it publishes 23 (158 -> 350 slots). Raising this widens the
+   hero scheduler AND the /c/consult funnel, which both read through here. */
+export async function getSlots(format: ConsultFormat, office?: string | null, days = 30): Promise<Slot[]> {
   const o = resolveOffice(office)
   const calendarId = o.calendars[format]
   if (!calendarId) throw Object.assign(new Error(`unknown format ${format} for office ${o.key}`), { status: 400 })
