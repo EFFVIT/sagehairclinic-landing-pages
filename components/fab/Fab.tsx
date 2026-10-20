@@ -4,7 +4,7 @@
 // the app's root layout (below the DniSwap mount). It fetches the client's config
 // from control at runtime and mounts the shadow-DOM widget on document.body, so
 // control edits go live within seconds with no redeploy. Renders nothing itself.
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { mountFab } from "./fab-widget";
 
@@ -16,6 +16,16 @@ import { mountFab } from "./fab-widget";
    the consult page's own source shows it is there. */
 const SUPPRESSED = ["/c/consult"];
 
+/* The same rule, one layer in. The hero scheduler is the booking UI on every
+   /c and /m page, and it is revealed mid-page rather than by navigating, so a
+   route list cannot express it. Measured on the live page at 390px: the FAB's
+   greeting panel renders 298x108 directly over the time grid and covers five
+   time buttons, which is the /c/consult failure exactly. HeroScheduler emits
+   this event on mount and unmount; the FAB unmounts while it is open. The
+   phone is not lost — the scheduler carries its own "Call ..." and "Or have us
+   call you" links, which is all the Sage FAB offered. */
+const SCHEDULER_EVENT = "shc:scheduler";
+
 export default function Fab({
   client,
   controlOrigin,
@@ -24,9 +34,19 @@ export default function Fab({
   controlOrigin?: string;
 }) {
   const pathname = usePathname();
-  const suppressed = SUPPRESSED.some(
-    (r) => pathname === r || pathname?.startsWith(`${r}/`)
-  );
+  const [schedulerOpen, setSchedulerOpen] = useState(false);
+
+  useEffect(() => {
+    const onScheduler = (e: Event) => {
+      setSchedulerOpen(Boolean((e as CustomEvent<{ open?: boolean }>).detail?.open));
+    };
+    window.addEventListener(SCHEDULER_EVENT, onScheduler);
+    return () => window.removeEventListener(SCHEDULER_EVENT, onScheduler);
+  }, []);
+
+  const suppressed =
+    schedulerOpen ||
+    SUPPRESSED.some((r) => pathname === r || pathname?.startsWith(`${r}/`));
 
   useEffect(() => {
     if (suppressed) return;

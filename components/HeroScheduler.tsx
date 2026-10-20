@@ -76,6 +76,20 @@ export default function HeroScheduler({
   phoneDisplay: string
   formAnchor?: string
 }) {
+  /* Tell the root-layout FAB to stand down while this panel is on screen. It
+     mounts onto document.body from the layout, so it knows nothing about what
+     is rendered beneath it; at 390px its greeting panel measures 298x108 over
+     the time grid and covers five time buttons. Same call the codebase already
+     made for /c/consult, which a route list cannot express here because this
+     panel is revealed by a click rather than by a navigation. */
+  useEffect(() => {
+    const fire = (open: boolean) => {
+      window.dispatchEvent(new CustomEvent('shc:scheduler', { detail: { open } }))
+    }
+    fire(true)
+    return () => { fire(false) }
+  }, [])
+
   const [format, setFormat] = useState<Format>('in-person')
   const [slots, setSlots] = useState<Slot[] | null>(null)
   const [failed, setFailed] = useState(false)
