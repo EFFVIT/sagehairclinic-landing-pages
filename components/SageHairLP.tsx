@@ -1,5 +1,5 @@
 'use client'
-import { Suspense, useState } from 'react'
+import { Suspense, useState, type ReactNode } from 'react'
 import GhlForm from './GhlForm'
 import GclidCapture from './GclidCapture'
 import DniSwap from './DniSwap'
@@ -275,6 +275,16 @@ interface Props {
    * fbclid-of and reverifies 9/9 (it is 8/9 today, so it is held).
    */
   heroFormPrimary?: boolean
+  /**
+   * Optional hero copy overrides. Omitting them keeps the evaluation hero, so
+   * only the pages that pass them change. The two hair-transplant URLs pass a
+   * transplant-consultation version (Layer 1, consult-first), approved by
+   * Nicole 2026-10-30 (ClickUp 86bce1v5g). Do not change that wording without
+   * sending it back to her for compliance review.
+   */
+  heroHeadline?: ReactNode
+  heroSubhead?: string
+  heroSecondLine?: string
 }
 
 // ── MAIN COMPONENT ───────────────────────────────────────────────────────────
@@ -289,6 +299,9 @@ export default function SageHairLP({
   dniClient,
   office,
   heroFormPrimary = false,
+  heroHeadline,
+  heroSubhead = 'Discover the cause of hair loss and learn which treatment options fit your goals.',
+  heroSecondLine = 'Request your consultation to understand hair loss patterns and explore your options.',
 }: Props) {
   const [areaCode, ...localParts] = phoneDisplay.split(' ')
   const localNumber = localParts.join(' ')
@@ -388,7 +401,9 @@ export default function SageHairLP({
                 marginBottom: 20,
                 maxWidth: 780,
               }}>
-                Medical Evaluation for<br /><em style={{ fontStyle: 'italic' }}>Thinning Hair &amp; Hair Loss Conditions</em>
+                {heroHeadline ?? (
+                  <>Medical Evaluation for<br /><em style={{ fontStyle: 'italic' }}>Thinning Hair &amp; Hair Loss Conditions</em></>
+                )}
               </h1>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -399,7 +414,7 @@ export default function SageHairLP({
                 lineHeight: 1.4,
                 maxWidth: 540,
               }}>
-                Discover the cause of hair loss and learn which treatment options fit your goals.
+                {heroSubhead}
               </p>
               <p style={{
                 fontFamily: "'DM Sans', sans-serif",
@@ -410,7 +425,7 @@ export default function SageHairLP({
                 lineHeight: 1.55,
                 maxWidth: 500,
               }}>
-                Request your consultation to understand hair loss patterns and explore your options.
+                {heroSecondLine}
               </p>
               <div className="shc-hero-trust" style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                 <StarRow size={18} />
