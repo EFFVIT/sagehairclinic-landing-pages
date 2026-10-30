@@ -29,6 +29,9 @@ export default function HairTransplantPage() {
         dniClient="sage-metuchen"
         office="metuchen"
         heroFormPrimary
+        heroHeadline={<>Hair Transplant Consultation<br /><em style={{ fontStyle: 'italic' }}>in Metuchen, NJ</em></>}
+        heroSubhead="Meet with our team for a hair loss evaluation and learn whether a hair transplant may be an option."
+        heroSecondLine="Request your consultation to discuss candidacy, technique options and next steps."
       />
       <Script
         src="https://widgets.leadconnectorhq.com/loader.js"
