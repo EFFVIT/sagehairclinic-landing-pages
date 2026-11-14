@@ -30,6 +30,16 @@ export interface MountFabOptions {
 }
 
 const DEFAULT_ORIGIN = "https://control.effvit.com";
+
+// Set by components/DniSwap.tsx when a paid session leases a tracking number.
+// The FAB cannot read the swapped number off the page reliably because it lives
+// in a shadow root that DniSwap's document-scoped swap never enters.
+declare global {
+  interface Window {
+    __shcDni?: { number: string; defaultDigits: string; exp: number };
+  }
+}
+const DNI_EVENT = "shc:dni";
 const OPEN_RETRY_TIMEOUT_MS = 5000;
 const OPEN_RETRY_POLL_MS = 200;
 
@@ -108,13 +118,23 @@ function watchGhlOpenState(root: HTMLElement): void {
 
 // ── Call-number resolution (DNI-aware, attribution-preserving) ───────────────
 function resolveTrackedNumber(fallback: string): string {
-  // 1) unexpired DNI lease written by DniSwap
+  // 1) unexpired DNI lease published by DniSwap on `window`.
+  //
+  // This read was `sessionStorage.getItem("dni_lease")` until 2026-11-14 — a key
+  // nothing has written since DniSwap became per-client and started writing
+  // `dni_lease_${client}`. Step 1 could therefore never hit, and the FAB fell
+  // through to step 2 for its whole life. Step 2 happens to be correct on both
+  // Sage LPs (each carries only tel: links matching its own defaultDigits, so
+  // DniSwap rewrites them), which is why a dead branch stayed invisible.
+  //
+  // It is NOT fixed by rebuilding the suffixed key here: the FAB is mounted as
+  // <Fab client="sage" /> for BOTH offices, so `dni_lease_${opts.client}` would
+  // read Moorestown's lease on a Metuchen page — a worse failure than the one
+  // being fixed, because it would be silently plausible. The window is the
+  // right scope: one page, one office, one DniSwap.
   try {
-    const raw = sessionStorage.getItem("dni_lease");
-    if (raw) {
-      const lease = JSON.parse(raw) as { number?: string; exp?: number };
-      if (lease?.number && (!lease.exp || lease.exp > Date.now())) return lease.number;
-    }
+    const lease = window.__shcDni;
+    if (lease?.number && (!lease.exp || lease.exp > Date.now())) return lease.number;
   } catch {
     /* ignore */
   }
@@ -257,6 +277,14 @@ function render(cfg: FabFrontendPayload): HTMLElement | null {
       if (item.actionType === "phone") (chips[i] as HTMLAnchorElement).href = phoneHref(item);
     });
   }
+
+  // A lease that lands while the card is already open (or before it is ever
+  // opened) must reach the hrefs too — openCard's refresh only covers the case
+  // where the user opens the card after the fetch resolves.
+  window.addEventListener(DNI_EVENT, refreshPhoneHrefs);
+  root.addEventListener("effvit-cl-teardown", () => {
+    window.removeEventListener(DNI_EVENT, refreshPhoneHrefs);
+  });
 
   chips.forEach((chip, index) => {
     chip.addEventListener("click", (e) => {
@@ -421,5 +449,8 @@ export async function mountFab(opts: MountFabOptions): Promise<() => void> {
   const root = render(cfg);
   if (!root) return () => {};
   document.body.appendChild(root);
-  return () => root.remove();
+  return () => {
+    root.dispatchEvent(new CustomEvent("effvit-cl-teardown"));
+    root.remove();
+  };
 }

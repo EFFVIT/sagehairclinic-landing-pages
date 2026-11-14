@@ -22,6 +22,30 @@ import { useEffect } from 'react'
 
 const DNI_ENDPOINT = 'https://control.effvit.com/api/dni/lease'
 
+// Publish the active lease PAGE-SCOPED, for consumers that cannot see into the
+// document to read a swapped tel: link — the FAB in particular lives in a
+// shadow root, which swapNumber's querySelectorAll and TreeWalker never cross.
+//
+// Deliberately NOT sessionStorage keyed by client. The FAB is mounted once in
+// the root layout as <Fab client="sage" /> for BOTH offices, so a consumer
+// building `dni_lease_${client}` from its own prop would read Moorestown's
+// lease on a Metuchen page. A page mounts exactly one DniSwap for exactly one
+// office, so the window is the correct scope and no office ambiguity exists.
+// `defaultDigits` is carried so a consumer can confirm which office it got.
+declare global {
+  interface Window {
+    __shcDni?: { number: string; defaultDigits: string; exp: number }
+  }
+}
+const DNI_EVENT = 'shc:dni'
+
+function publishLease(number: string, defaultDigits: string, exp: number) {
+  try {
+    window.__shcDni = { number, defaultDigits, exp }
+    window.dispatchEvent(new CustomEvent(DNI_EVENT, { detail: window.__shcDni }))
+  } catch { /* never break the page */ }
+}
+
 function formatDashes(e164: string): string {
   const d = e164.replace(/\D/g, '').replace(/^1/, '')
   return `${d.slice(0, 3)}-${d.slice(3, 6)}-${d.slice(6)}`
@@ -126,7 +150,10 @@ export default function DniSwap({
       if (cached) {
         try {
           const { number, exp } = JSON.parse(cached)
-          if (number && exp > Date.now()) swapNumber(number, defaultDigits)
+          if (number && exp > Date.now()) {
+            swapNumber(number, defaultDigits)
+            publishLease(number, defaultDigits, exp)
+          }
         } catch { /* ignore */ }
       }
 
@@ -153,11 +180,13 @@ export default function DniSwap({
         .then((r) => r.json())
         .then(({ lease }) => {
           if (lease?.number) {
+            const exp = Date.now() + (lease.ttlSeconds ?? 1800) * 1000
             sessionStorage.setItem(cacheKey, JSON.stringify({
               number: lease.number,
-              exp: Date.now() + (lease.ttlSeconds ?? 1800) * 1000,
+              exp,
             }))
             swapNumber(lease.number, defaultDigits)
+            publishLease(lease.number, defaultDigits, exp)
             // React re-renders (accordions, carousels) restore the static
             // number from their own props — watch and re-apply. The swap is
             // idempotent (swapped text no longer matches), so the observer
